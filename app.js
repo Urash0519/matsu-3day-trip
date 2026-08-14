@@ -275,7 +275,7 @@ let saved = new Set(JSON.parse(localStorage.getItem("matsu-saved") || "[]"));
 
 function renderCards() {
   grid.innerHTML = spots.map((spot, index) => `
-    <article class="spot-card" data-day="${spot.day}" data-id="${spot.id}">
+    <article class="spot-card" data-day="${spot.day}" data-id="${spot.id}" data-detail="${spot.id}" tabindex="0" aria-label="展開${spot.name}介紹">
       <div class="spot-image-wrap">
         <img class="spot-image" src="${spot.image}" alt="${spot.name}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='og.png'">
         <span class="spot-number">${spot.order}</span>
@@ -286,8 +286,11 @@ function renderCards() {
         <h3>${spot.name}</h3>
         <p>${spot.summary}</p>
         <div class="spot-actions">
-          <button class="detail-button" type="button" data-detail="${spot.id}">展開介紹 →</button>
-          <span class="spot-time">${spot.time}</span>
+          <span class="detail-button" aria-hidden="true">點卡片看介紹 →</span>
+          <span class="spot-schedule">
+            <span class="spot-time"><span aria-hidden="true">◷</span> ${spot.time}</span>
+            <span class="spot-duration"><span aria-hidden="true">⌛</span> 建議停留 ${spot.duration}</span>
+          </span>
         </div>
       </div>
     </article>
@@ -384,9 +387,24 @@ document.addEventListener("click", event => {
   const saveButton = event.target.closest("[data-save]");
   const detailButton = event.target.closest("[data-detail]");
   const removeButton = event.target.closest("[data-remove]");
-  if (saveButton) toggleSave(saveButton.dataset.save);
+  if (saveButton) {
+    toggleSave(saveButton.dataset.save);
+    return;
+  }
+  if (removeButton) {
+    toggleSave(removeButton.dataset.remove);
+    return;
+  }
   if (detailButton) openSpot(detailButton.dataset.detail);
-  if (removeButton) toggleSave(removeButton.dataset.remove);
+});
+
+grid.addEventListener("keydown", event => {
+  const card = event.target.closest(".spot-card");
+  if (!card || event.target.closest("button, a")) return;
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openSpot(card.dataset.detail);
+  }
 });
 
 document.querySelectorAll(".day-tab").forEach(tab => {
