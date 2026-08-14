@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102f42">
+  <meta name="description" content="2026 馬祖南竿、北竿三天兩夜互動旅遊行程。">
+  <title>島嶼慢行｜馬祖三天兩夜</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="回到首頁">
+      <span class="brand-mark" aria-hidden="true">嶼</span>
+      <span>島嶼慢行</span>
+    </a>
+    <nav class="desktop-nav" aria-label="主要導覽">
+      <a href="#overview">行程總覽</a>
+      <a href="#itinerary">每日行程</a>
+      <a href="#planner">我的清單</a>
+    </nav>
+    <button class="saved-pill" id="savedSummary" type="button" aria-label="查看已收藏景點">
+      <span aria-hidden="true">♥</span>
+      <span id="savedCount">0</span> 個必去
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop" role="img" aria-label="馬祖芹壁聚落石屋與海景"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">MATSU · 2026</p>
+        <h1 id="hero-title">迎著海風，<br>慢慢抵達馬祖</h1>
+        <p class="hero-copy">基隆夜航，南竿進、北竿出。把戰地坑道、百年石厝、海上梅花鹿與島嶼夕陽，收進三天兩夜。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#itinerary">查看每日行程</a>
+          <button class="button button-ghost" id="openAllSaved" type="button">我的必去清單</button>
+        </div>
+      </div>
+      <aside class="departure-card" aria-label="出發資訊">
+        <span class="mini-label">距離出發</span>
+        <strong id="countdown">5 天</strong>
+        <div class="departure-route">
+          <span>基隆</span><span class="route-line"></span><span>南竿</span><span class="route-line"></span><span>北竿</span>
+        </div>
+        <p>8/19 22:00 新臺馬輪</p>
+      </aside>
+      <a class="scroll-cue" href="#overview"><span>向下探索</span><span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="section overview" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow dark">TRIP AT A GLANCE</p>
+          <h2 id="overview-title">一眼看懂這趟旅程</h2>
+        </div>
+        <p>不追求打卡數量，用最少的折返，把兩座島嶼最值得停留的風景串起來。</p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card accent-blue"><span class="stat-icon">◷</span><strong>3天2夜</strong><small>夜航不佔白天</small></article>
+        <article class="stat-card accent-coral"><span class="stat-icon">⌖</span><strong>南竿 → 北竿</strong><small>單向移動不折返</small></article>
+        <article class="stat-card accent-gold"><span class="stat-icon">✦</span><strong>16個停靠點</strong><small>景點、美食與體驗</small></article>
+        <article class="stat-card accent-green"><span class="stat-icon">≈</span><strong>2段船程</strong><small>新臺馬輪＋島際船</small></article>
+      </div>
+
+      <div class="route-board" aria-label="旅程路線圖">
+        <div class="route-intro">
+          <span class="mini-label">ROUTE</span>
+          <h3>沿著海，從南走到北</h3>
+          <p>第一天睡在海上；第二天完整探索南竿；第三天跳島北竿與大坵；最後用半日收尾，從北竿飛回松山。</p>
+        </div>
+        <div class="route-map">
+          <div class="map-watermark">馬祖</div>
+          <div class="island island-nangan">
+            <span class="island-shape"></span>
+            <div><small>DAY 1</small><strong>南竿</strong><span>戰地 × 聚落</span></div>
+          </div>
+          <div class="island island-daqiu">
+            <span class="island-shape"></span>
+            <div><small>DAY 2</small><strong>大坵</strong><span>梅花鹿島</span></div>
+          </div>
+          <div class="island island-beigan">
+            <span class="island-shape"></span>
+            <div><small>DAY 2–3</small><strong>北竿</strong><span>石厝 × 海景</span></div>
+          </div>
+          <svg class="route-svg" viewBox="0 0 620 300" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M130,210 C250,175 315,205 390,118 C430,75 490,92 525,55" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section itinerary-section" id="itinerary" aria-labelledby="itinerary-title">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow dark">YOUR ITINERARY</p>
+          <h2 id="itinerary-title">每日行程</h2>
+        </div>
+        <p>點選日期切換景點；打開卡片可查看簡介、停留建議與地圖。</p>
+      </div>
+
+      <div class="day-tabs" role="tablist" aria-label="選擇行程日期">
+        <button class="day-tab active" type="button" role="tab" aria-selected="true" data-day="all">
+          <span>全部</span><strong>旅程總覽</strong>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="0">
+          <span>8/19 WED</span><strong>基隆夜航</strong>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="1">
+          <span>8/20 THU</span><strong>南竿慢遊</strong>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="2">
+          <span>8/21 FRI</span><strong>北竿尋鹿</strong>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="3">
+          <span>8/22 SAT</span><strong>海島收尾</strong>
+        </button>
+      </div>
+
+      <div class="day-banner" id="dayBanner" aria-live="polite">
+        <div><span class="mini-label" id="bannerDate">ALL DAYS</span><h3 id="bannerTitle">一趟剛剛好的島嶼旅行</h3></div>
+        <p id="bannerCopy">共 16 個精選停靠點，可自由收藏成自己的必去清單。</p>
+      </div>
+
+      <div class="spot-grid" id="spotGrid"></div>
+    </section>
+
+    <section class="section planner" id="planner" aria-labelledby="planner-title">
+      <div class="planner-copy">
+        <p class="eyebrow">MY LITTLE PLAN</p>
+        <h2 id="planner-title">把喜歡的地方，<br>收進自己的旅程</h2>
+        <p>按下景點卡上的愛心，就會自動保存在這台裝置。出發前再回來確認一次，不必重新整理清單。</p>
+        <div class="planner-progress">
+          <div><span>已收藏</span><strong><span id="plannerCount">0</span> / 16</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+      </div>
+      <div class="saved-list-panel">
+        <div class="saved-panel-head"><h3>我的必去清單</h3><button id="clearSaved" type="button">全部清除</button></div>
+        <div id="savedList" class="saved-list"></div>
+      </div>
+    </section>
+
+    <section class="section notes" aria-labelledby="notes-title">
+      <div class="section-heading compact">
+        <div><p class="eyebrow dark">BEFORE YOU GO</p><h2 id="notes-title">出發前提醒</h2></div>
+      </div>
+      <div class="note-grid">
+        <article><span>01</span><h3>先看海象</h3><p>8/19 上午 11 點後再次確認新臺馬輪，島際船與大坵船班也以當日公告為準。</p></article>
+        <article><span>02</span><h3>預約熱門體驗</h3><p>八八坑道、北海坑道搖櫓、大坵早班船與龍福山莊建議提前電話預約。</p></article>
+        <article><span>03</span><h3>輕裝跳島</h3><p>8/21 一早南竿轉北竿，建議使用可肩背的小行李，並先詢問民宿接送與寄放。</p></article>
+        <article><span>04</span><h3>留足飛行緩衝</h3><p>若北竿回程，建議起飛前至少 60 分鐘抵達；若改南竿，搭 13:00 前後船班較安心。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><span class="brand-mark small">嶼</span><strong>島嶼慢行</strong></div>
+    <p>為 2026/8/19–8/22 馬祖旅行製作 · 船班與開放時間請以官方最新公告為準</p>
+    <a href="#top">回到頂端 ↑</a>
+  </footer>
+
+  <dialog class="spot-dialog" id="spotDialog">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="關閉景點介紹">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
