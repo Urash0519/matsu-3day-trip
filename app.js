@@ -153,7 +153,7 @@ const spots = [
     duration: "90 分鐘", best: "晚餐", map: "龍福山莊 北竿"
   },
   {
-    id: "banli", day: 3, order: "D3 · 01", name: "坂里大宅", area: "北竿", category: "閩東建築", time: "09:00",
+    id: "banli", day: 3, order: "D3 · 01", name: "坂里大宅", area: "北竿", category: "閩東建築", time: "08:30",
     image: "https://storage.googleapis.com/matsu/images/article_20267_1939df612b911e1c3b7551b66beea2ef.jpg",
     credit: "馬祖記憶庫", source: "https://matsumemory.tw/articles/20267",
     summary: "走進百年古厝，看石與木如何守住一個家。",
@@ -162,7 +162,7 @@ const spots = [
     duration: "40–50 分鐘", best: "上午", map: "坂里大宅"
   },
   {
-    id: "broadcast", day: 3, order: "D3 · 02", name: "馬祖播音站", area: "北竿", category: "戰地記憶", time: "10:10",
+    id: "broadcast", day: 3, order: "D3 · 02", name: "馬祖播音站", area: "北竿", category: "戰地記憶", time: "09:30",
     image: "https://www.matsu-news.gov.tw/uploads/news/205820.JPG",
     credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/136554",
     summary: "巨型喇叭留下前線時代跨海傳聲的記憶。",
@@ -171,7 +171,7 @@ const spots = [
     duration: "20–30 分鐘", best: "順路停靠", map: "馬祖播音站 北竿"
   },
   {
-    id: "short-slope", day: 3, order: "D3 · 03", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", time: "10:50",
+    id: "short-slope", day: 3, order: "D3 · 03", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", time: "10:10",
     image: "https://cdn.4travel.jp/img/thumbnails/imk/tips_pict/19/52/36/650x450_19523641.jpg?updated_at=1699245951",
     credit: "4travel", source: "https://4travel.jp/os_shisetsu/10436986",
     summary: "最後從高處回望，讀懂北竿的山海輪廓。",
@@ -180,22 +180,31 @@ const spots = [
     duration: "25–35 分鐘", best: "能見度佳時", map: "短坡山觀景台 北竿"
   },
   {
-    id: "apo-fish-noodle", day: 3, order: "D3 · 04", name: "阿婆魚麵店", area: "北竿塘岐", category: "回程午餐", time: "11:40",
+    id: "apo-fish-noodle", day: 3, order: "D3 · 04", name: "阿婆魚麵店", area: "北竿塘岐", category: "回程午餐", time: "11:00",
     image: "https://cdn.walkerland.com.tw/images/upload/poi/p116351/m26624/beb886bf35b10523538fb706b7ed78483f415647.jpg",
     credit: "WalkerLand（阿婆魚麵店）", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods/2295",
     summary: "用一碗手工魚麵，替北竿旅程留下鮮甜收尾。",
     intro: "魚麵把魚肉揉入麵糰，經過桿平、切麵與乾燥等工序，可煮湯、乾炒或炸成零嘴。阿婆魚麵店位在塘岐，午餐後前往機場或塘後道都很方便。",
-    tip: "電話 0836-56539；官方目前列 11:00–13:00，建議 11:40 前抵達。可點魚麵、魚丸、魚餃與炸魚麵。",
-    duration: "50 分鐘", best: "11:40 午餐", map: "阿婆魚麵店 北竿"
+    tip: "電話 0836-56539；官方目前列 11:00–13:00，建議開店即抵達。可點魚麵、魚丸、魚餃與炸魚麵。",
+    duration: "50 分鐘", best: "11:00 午餐", map: "阿婆魚麵店 北竿"
   },
   {
-    id: "tanghou", day: 3, order: "D3 · 05", name: "塘後道沙灘", area: "北竿", category: "海岸散步", time: "12:45",
+    id: "tanghou", day: 3, order: "D3 · 05", name: "塘後道沙灘", area: "北竿", category: "海岸散步", time: "12:00",
     image: "https://cdn.walkerland.com.tw/images/upload/article/2021/12/m121434/2467bf0f09fed1712e10103709a7d7c8d247c0ed.jpg",
     credit: "WalkerLand", source: "https://www.walkerland.com.tw/article/view/314542",
     summary: "在機場旁看海，替跳島旅程留一段空白。",
     intro: "塘後道沙灘位於塘岐與后沃之間，緊鄰北竿機場跑道。沙洲、海浪與飛機起降形成少見景觀，也是回程前最不費力、最適合散步的海邊。",
-    tip: "不建議下水；13:40 左右回住宿處取行李與還車，再依班機時間提前抵達機場。",
-    duration: "30–45 分鐘", best: "午餐前", map: "塘後道沙灘"
+    tip: "不建議下水；12:50 後可到塘岐買伴手禮，13:40 回住宿處取行李與還車，14:30 前抵達白沙港。",
+    duration: "30–45 分鐘", best: "午餐後", map: "塘後道沙灘"
+  },
+  {
+    id: "baisha-nangan-flight", day: 3, order: "D3 · 06", name: "白沙港 → 南竿機場", area: "北竿至南竿", category: "回程交通", time: "15:20 船班 · 18:20 起飛",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg/1020px-Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg",
+    credit: "Terry850324／Wikimedia Commons（CC BY-SA 4.0）", source: "https://commons.wikimedia.org/wiki/File:Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg",
+    summary: "搭 15:20 船回南竿，為 18:20 班機留足轉乘緩衝。",
+    intro: "白沙港是北竿的海上門戶。這段回程先搭島際船抵達南竿福澳港，再轉乘計程車前往南竿機場；不把最後一班船壓得太緊，才能從容完成報到與行李托運。",
+    tip: "14:30 前抵達白沙港；15:20 開船，約 15:40 抵達福澳港，再前往南竿機場，目標 16:10 前抵達。16:00 只作備案，不建議搭 16:30 以後船班。8/21 晚上及 8/22 早上再次確認海象與船班。",
+    duration: "約 3 小時", best: "15:20 船班", map: "北竿白沙港"
   }
 ];
 
@@ -223,11 +232,11 @@ const foods = [
 ];
 
 const dayInfo = {
-  all: ["ALL DAYS", "一趟剛剛好的島嶼旅行", "共 22 個精選停靠點，包含每日餐廳與夜間搖櫓船。"],
+  all: ["ALL DAYS", "一趟剛剛好的島嶼旅行", "共 23 個精選停靠點，包含每日餐廳、夜間搖櫓船與回程交通。"],
   0: ["8/19 · WED", "基隆晚餐後夜航，睡醒抵達南竿", "18:15 廟口晚餐；20:30 前抵達碼頭，22:00 開航。"],
   1: ["8/20 · THU", "南竿：戰地、聚落、風味餐與藍眼淚", "白天順走南竿核心景點，17:10 早晚餐後回北海坑道搭夜間搖櫓船。"],
   2: ["8/21 · FRI", "北竿：尋鹿、海景午餐與石厝夕陽", "早班島際船轉北竿，先大坵、後橋仔與芹壁，17:30 塘岐海鮮晚餐。"],
-  3: ["8/22 · SAT", "魚麵收尾，從海邊飛回家", "上午順走機場周邊，11:40 吃魚麵，依班機預留至少 60 分鐘報到。"]
+  3: ["8/22 · SAT", "北竿半日收尾，回南竿搭機", "11:00 吃魚麵，14:30 前到白沙港；搭 15:20 船回南竿，銜接 18:20 班機。"]
 };
 
 const grid = document.querySelector("#spotGrid");
