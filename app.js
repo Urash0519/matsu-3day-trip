@@ -109,8 +109,8 @@ const spots = [
   },
   {
     id: "daqiu", day: 2, order: "D2 · 01", name: "大坵島", area: "北竿外島", category: "梅花鹿島", time: "08:30 船班",
-    image: "https://www.matsu-nsa.gov.tw/FileArtPic.ashx?h=800&id=3020&w=1200",
-    credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/Attraction-Content.aspx?a=2720&l=1",
+    image: "images/daqiu.jpg",
+    credit: "馬祖日報／景點家", source: "https://www.matsu-news.gov.tw/news/article/200439",
     summary: "搭十分鐘的船，去一座梅花鹿比人多的島。",
     intro: "大坵曾有居民與駐軍，如今成為梅花鹿自由生活的無人島。沿環島步道行走，可以近距離觀察鹿群、廢棄聚落與海蝕地形，是八月最有季節感的體驗。",
     tip: "船班受海象影響，務必預訂；不追逐、不觸摸鹿角，也不要餵食自帶食物。",
@@ -241,7 +241,7 @@ function renderCards() {
   grid.innerHTML = spots.map((spot, index) => `
     <article class="spot-card" data-day="${spot.day}" data-id="${spot.id}">
       <div class="spot-image-wrap">
-        <img class="spot-image" src="${spot.image}" alt="${spot.name}" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=75'">
+        <img class="spot-image" src="${spot.image}" alt="${spot.name}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='og.png'">
         <span class="spot-number">${spot.order}</span>
         <button class="save-button ${saved.has(spot.id) ? "saved" : ""}" type="button" data-save="${spot.id}" aria-label="${saved.has(spot.id) ? "移除" : "收藏"}${spot.name}" aria-pressed="${saved.has(spot.id)}">${saved.has(spot.id) ? "♥" : "♡"}</button>
       </div>
@@ -316,7 +316,7 @@ function openSpot(id) {
   if (!spot) return;
   dialogContent.innerHTML = `
     <div class="dialog-hero">
-      <img src="${spot.image}" alt="${spot.name}" referrerpolicy="no-referrer">
+      <img src="${spot.image}" alt="${spot.name}" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='og.png'">
       <div class="dialog-title"><span>${spot.order} · ${spot.area}</span><h2>${spot.name}</h2></div>
     </div>
     <div class="dialog-body">
