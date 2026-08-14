@@ -140,16 +140,43 @@ const spots = [
     credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/album/1008",
     summary: "石屋沿山層疊，是最適合把速度放慢的地方。",
     intro: "芹壁是馬祖保存最完整的閩東建築聚落之一。花崗岩石屋、紅瓦屋頂與海岸階梯依山展開，轉角不時露出龜島與藍色海面，被稱為馬祖的地中海。",
-    tip: "至少留兩小時散步與喝咖啡；午後到夕陽的光線最有層次。",
-    duration: "2–3 小時", best: "午後至夕陽", map: "芹壁聚落"
+    tip: "安排 13:20–15:20 散步與喝咖啡；15:20 接著前往附近的馬祖播音站。",
+    duration: "2 小時", best: "午後", map: "芹壁聚落"
   },
   {
-    id: "longfu", day: 2, order: "D2 · 05", name: "龍福山莊", area: "北竿塘岐", category: "海鮮晚餐", time: "17:30",
+    id: "broadcast", day: 2, order: "D2 · 05", name: "馬祖播音站", area: "北竿", category: "戰地記憶", time: "15:20",
+    image: "https://www.matsu-news.gov.tw/uploads/news/205820.JPG",
+    credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/136554",
+    summary: "巨型喇叭留下前線時代跨海傳聲的記憶。",
+    intro: "冷戰時期，馬祖播音站曾向對岸進行心戰廣播。今日打卡點以巨型綠色喇叭重現那段歷史，強烈造型既荒謬又真實，是理解戰地日常的有趣入口。",
+    tip: "安排 15:20–15:40；目前可拍照的是芹壁候車亭旁的造景，並非山頂舊站本體。",
+    duration: "20 分鐘", best: "芹壁後順遊", map: "馬祖播音站 北竿"
+  },
+  {
+    id: "bishan", day: 2, order: "D2 · 06", name: "壁山觀景台", area: "北竿", category: "島嶼展望", time: "15:50",
+    image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bishan_Lookout%2C_Beigan%2C_Matsu%2C_Taiwan.JPG",
+    credit: "Shoestring／Wikimedia Commons（CC BY-SA 4.0）", source: "https://commons.wikimedia.org/wiki/File:Bishan_Lookout,_Beigan,_Matsu,_Taiwan.JPG",
+    summary: "站上北竿最高點，把機場、塘岐與離島一次收入眼底。",
+    intro: "壁山海拔約 298 公尺，是北竿視野最開闊的制高點。天氣清朗時可俯瞰塘岐、后沃、北竿機場，並遠望大坵、高登等島嶼，最適合用一張全景照讀懂北竿地形。",
+    tip: "安排 15:50–16:15，從觀景台停車處短暫停留即可；步道路段風勢強時請勿勉強久留。",
+    duration: "25 分鐘", best: "能見度佳時", map: "壁山觀景台 北竿"
+  },
+  {
+    id: "war-peace", day: 2, order: "D2 · 07", name: "戰爭和平紀念公園主題館", area: "北竿", category: "戰地記憶", time: "16:25",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg/1280px-2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg",
+    credit: "玄史生／Wikimedia Commons（CC BY-SA 2.0）", source: "https://commons.wikimedia.org/wiki/File:2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_(9677541143).jpg",
+    summary: "從軍事據點與史料，理解馬祖如何由前線走向日常。",
+    intro: "園區以軍事營舍、武器展示與主題館保存馬祖戰地政務時期的記憶。走過播音站與壁山後再到這裡，能把抽象的冷戰歷史接回島上居民的生活經驗。",
+    tip: "安排 16:25–17:05，17:10 離開前往塘岐。8 月開放至 17:30，但每週三休館；若臨時休館則改走戶外園區。",
+    duration: "40 分鐘", best: "閉館前", map: "戰爭和平紀念公園主題館"
+  },
+  {
+    id: "longfu", day: 2, order: "D2 · 08", name: "龍福山莊", area: "北竿塘岐", category: "海鮮晚餐", time: "17:30",
     image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1400&q=82",
     credit: "Unsplash（海鮮料理示意）", source: "https://unsplash.com/",
     summary: "用一鍋澎湃海鮮，替北竿的一天收尾。",
     intro: "龍福山莊是三份參考行程都出現的北竿停靠點，招牌海鮮痛風鍋集合淡菜、鮮蝦、小卷與當季漁獲。多人同行最適合預訂，共享的形式也很有旅行感。",
-    tip: "電話 0836-55077；4 人以上可詢問痛風鍋，2–3 人建議點一般合菜。食材依當日漁獲調整，務必預訂。",
+    tip: "17:10 從戰爭和平紀念公園出發。電話 0836-55077；4 人以上可詢問痛風鍋，2–3 人建議點一般合菜。食材依當日漁獲調整，務必預訂。",
     duration: "90 分鐘", best: "晚餐", map: "龍福山莊 北竿"
   },
   {
@@ -158,26 +185,26 @@ const spots = [
     credit: "馬祖記憶庫", source: "https://matsumemory.tw/articles/20267",
     summary: "走進百年古厝，看石與木如何守住一個家。",
     intro: "坂里大宅建於清代，是北竿少見保存完整的傳統大宅。厚實石牆、木構天井與家族生活空間，呈現閩東建築因應海風與島嶼氣候的智慧。",
-    tip: "清晨人較少、光影柔和；參觀時降低音量並尊重館舍規範。",
-    duration: "40–50 分鐘", best: "上午", map: "坂里大宅"
+    tip: "安排 08:30–09:15；清晨人較少、光影柔和，參觀時降低音量並尊重館舍規範。",
+    duration: "45 分鐘", best: "上午", map: "坂里大宅"
   },
   {
-    id: "broadcast", day: 3, order: "D3 · 02", name: "馬祖播音站", area: "北竿", category: "戰地記憶", time: "09:30",
-    image: "https://www.matsu-news.gov.tw/uploads/news/205820.JPG",
-    credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/136554",
-    summary: "巨型喇叭留下前線時代跨海傳聲的記憶。",
-    intro: "冷戰時期，馬祖播音站曾向對岸進行心戰廣播。今日打卡點以巨型綠色喇叭重現那段歷史，強烈造型既荒謬又真實，是理解戰地日常的有趣入口。",
-    tip: "目前可拍照的是芹壁候車亭旁的造景，並非山頂舊站本體。",
-    duration: "20–30 分鐘", best: "順路停靠", map: "馬祖播音站 北竿"
+    id: "banli-beach", day: 3, order: "D3 · 02", name: "坂里沙灘", area: "北竿", category: "海岸散步", time: "09:20",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg/1280px-Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg",
+    credit: "lienyuan lee／Wikimedia Commons（CC BY 3.0）", source: "https://commons.wikimedia.org/wiki/File:Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg",
+    summary: "走出百年大宅，幾步路就到北竿最平緩的沙岸。",
+    intro: "坂里沙灘就在坂里大宅旁，寬闊沙地與平緩潮線很適合晨間散步。從傳統石厝轉進海岸，只需短短幾分鐘，卻能看到北竿聚落與海景緊密相連的另一面。",
+    tip: "安排 09:20–09:50；以散步與拍照為主，不下水並留意潮汐、浪況。",
+    duration: "30 分鐘", best: "上午", map: "坂里沙灘"
   },
   {
-    id: "short-slope", day: 3, order: "D3 · 03", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", time: "10:10",
+    id: "short-slope", day: 3, order: "D3 · 03", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", time: "10:05",
     image: "https://cdn.4travel.jp/img/thumbnails/imk/tips_pict/19/52/36/650x450_19523641.jpg?updated_at=1699245951",
     credit: "4travel", source: "https://4travel.jp/os_shisetsu/10436986",
     summary: "最後從高處回望，讀懂北竿的山海輪廓。",
     intro: "短坡山一帶視野開闊，可以從高處觀察北竿聚落、機場與海岸相互依存的地形。它不像芹壁華麗，更像一個讓旅程慢慢沉澱的觀景停靠。",
-    tip: "風大時避免靠近邊坡；若時間不足，可直接前往塘後道沙灘。",
-    duration: "25–35 分鐘", best: "能見度佳時", map: "短坡山觀景台 北竿"
+    tip: "安排 10:05–10:35，10:40 回塘岐休息並準備午餐；風大時避免靠近邊坡。",
+    duration: "30 分鐘", best: "能見度佳時", map: "短坡山觀景台 北竿"
   },
   {
     id: "apo-fish-noodle", day: 3, order: "D3 · 04", name: "阿婆魚麵店", area: "北竿塘岐", category: "回程午餐", time: "11:00",
@@ -185,7 +212,7 @@ const spots = [
     credit: "WalkerLand（阿婆魚麵店）", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods/2295",
     summary: "用一碗手工魚麵，替北竿旅程留下鮮甜收尾。",
     intro: "魚麵把魚肉揉入麵糰，經過桿平、切麵與乾燥等工序，可煮湯、乾炒或炸成零嘴。阿婆魚麵店位在塘岐，午餐後前往機場或塘後道都很方便。",
-    tip: "電話 0836-56539；官方目前列 11:00–13:00，建議開店即抵達。可點魚麵、魚丸、魚餃與炸魚麵。",
+    tip: "安排 11:00–11:50；電話 0836-56539，官方目前列 11:00–13:00，建議開店即抵達。可點魚麵、魚丸、魚餃與炸魚麵。",
     duration: "50 分鐘", best: "11:00 午餐", map: "阿婆魚麵店 北竿"
   },
   {
@@ -194,8 +221,8 @@ const spots = [
     credit: "WalkerLand", source: "https://www.walkerland.com.tw/article/view/314542",
     summary: "在機場旁看海，替跳島旅程留一段空白。",
     intro: "塘後道沙灘位於塘岐與后沃之間，緊鄰北竿機場跑道。沙洲、海浪與飛機起降形成少見景觀，也是回程前最不費力、最適合散步的海邊。",
-    tip: "不建議下水；12:50 後可到塘岐買伴手禮，13:40 回住宿處取行李與還車，14:30 前抵達白沙港。",
-    duration: "30–45 分鐘", best: "午餐後", map: "塘後道沙灘"
+    tip: "安排 12:00–12:40，不建議下水；12:50–13:30 到塘岐買伴手禮，13:40 回住宿處取行李與還車，14:30 前抵達白沙港。",
+    duration: "40 分鐘", best: "午餐後", map: "塘後道沙灘"
   },
   {
     id: "baisha-nangan-flight", day: 3, order: "D3 · 06", name: "白沙港 → 南竿機場", area: "北竿至南竿", category: "回程交通", time: "15:20 船班 · 18:20 起飛",
@@ -232,11 +259,11 @@ const foods = [
 ];
 
 const dayInfo = {
-  all: ["ALL DAYS", "一趟剛剛好的島嶼旅行", "共 23 個精選停靠點，包含每日餐廳、夜間搖櫓船與回程交通。"],
+  all: ["ALL DAYS", "一趟剛剛好的島嶼旅行", "共 26 個精選停靠點，包含每日餐廳、夜間搖櫓船與回程交通。"],
   0: ["8/19 · WED", "基隆晚餐後夜航，睡醒抵達南竿", "18:15 廟口晚餐；20:30 前抵達碼頭，22:00 開航。"],
   1: ["8/20 · THU", "南竿：戰地、聚落、風味餐與藍眼淚", "18:00 晚餐、19:05 出發；19:40 前至北海坑道內報到、購票及聽取說明，參加已預約的 20:00 搖櫓船。"],
-  2: ["8/21 · FRI", "北竿：尋鹿、海景午餐與石厝夕陽", "早班島際船轉北竿，先大坵、後橋仔與芹壁，17:30 塘岐海鮮晚餐。"],
-  3: ["8/22 · SAT", "北竿半日收尾，回南竿搭機", "11:00 吃魚麵，14:30 前到白沙港；搭 15:20 船回南竿，銜接 18:20 班機。"]
+  2: ["8/21 · FRI", "北竿：尋鹿、石厝與戰地山海", "大坵、橋仔與芹壁後，順遊播音站、壁山及戰爭和平紀念公園，17:30 塘岐晚餐。"],
+  3: ["8/22 · SAT", "北竿晨遊，回南竿搭機", "坂里大宅與沙灘、短坡山後 11:00 吃魚麵；15:20 搭船回南竿，銜接 18:20 班機。"]
 };
 
 const grid = document.querySelector("#spotGrid");
