@@ -1,243 +1,113 @@
-const spots = [
-  {
-    id: "keelung-miaokou", day: 0, order: "D0 · 01", name: "基隆廟口晚餐", area: "基隆", category: "出發前晚餐", time: "18:15",
-    image: "https://www.settour.com.tw/ss_img/poi/20210302/ef4a472b-0f90-46c3-9c88-71fb6d3df9d5.jpeg",
-    credit: "東南旅遊（基隆廟口夜市）", source: "https://travel.klcg.gov.tw/TourContent.aspx?n=8059&s=558&sms=12550",
-    summary: "先用鼎邊趖與天婦羅暖胃，再走向夜航碼頭。",
-    intro: "基隆廟口夜市聚集鼎邊趖、天婦羅、滷肉飯與營養三明治等港都小吃。把晚餐安排在登船前，既能避開船上餐食選擇有限，也讓旅程從港口滋味開始。",
-    tip: "19:30 前吃完並往西岸旅客碼頭移動；容易暈船者避免油炸吃太多，行李較大可改在車站周邊簡單用餐。",
-    duration: "60–75 分鐘", best: "18:15–19:30", map: "基隆廟口夜市"
-  },
-  {
-    id: "new-taima", day: 0, order: "D0 · 02", name: "新臺馬輪", area: "基隆 → 南竿", category: "夜航體驗", time: "21:00 登船",
-    image: "https://www.matsu-news.gov.tw/uploads/news/20230415224709_82.jpg",
-    credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/209339",
-    summary: "在船上睡一晚，醒來就是馬祖的海。",
-    intro: "新臺馬輪以基隆港為起點，夜裡橫越臺灣海峽前往馬祖。8 月 19 日是單號日，依「單馬雙東」原則先抵南竿，這段夜航不只是交通，也是旅程正式開始的儀式。",
-    tip: "20:30 前抵達西岸旅客碼頭；先吃晚餐、準備暈船藥與一件薄外套。",
-    duration: "約 8.5 小時", best: "甲板離港時", map: "基隆西岸旅客碼頭"
-  },
-  {
-    id: "jieshou-market", day: 1, order: "D1 · 01", name: "介壽獅子市場", area: "南竿", category: "早餐", time: "07:30",
-    image: "https://img.fun-life.com.tw/mazu/lion-market/lion-market.jpg",
-    credit: "捲毛阿偉", source: "https://awei45.tw/lion-market/",
-    summary: "用鼎邊糊、虫弟餅與老酒麵線喚醒早晨。",
-    intro: "介壽獅子市場是南竿最有生活感的清晨據點。一樓有蔬果與漁獲，二樓聚集馬祖早餐小吃；從觀光客到在地居民，都在這裡開啟一天。",
-    tip: "越早越齊全，建議 8 點前抵達；多帶一點現金，方便分食不同攤位。",
-    duration: "45–60 分鐘", best: "06:30–09:00", map: "介壽獅子市場"
-  },
-  {
-    id: "tunnel-88", day: 1, order: "D1 · 02", name: "八八坑道與馬祖酒廠", area: "南竿", category: "酒香戰地", time: "08:40",
-    image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/d20633a2cecb4d6d81f07e16a49417e2.jpg",
-    credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1457",
-    summary: "昔日軍事坑道，現在收藏著整座島的酒香。",
-    intro: "八八坑道原是戰備坑道，恆溫恆濕的環境後來成為陳年高粱與老酒的天然酒窖。坑道口排列的陶甕、岩壁上的水氣與濃郁酒香，共同構成馬祖獨特的戰地轉身。",
-    tip: "目前參觀可能採預約制；可與隔壁馬祖酒廠一起安排，出發前再次電話確認。",
-    duration: "60–75 分鐘", best: "上午", map: "八八坑道 馬祖"
-  },
-  {
-    id: "yima", day: 1, order: "D1 · 03", name: "依嬤的店", area: "南竿復興村", category: "馬祖風味午餐", time: "11:00",
-    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=82",
-    credit: "Unsplash（閩式料理示意）", source: "https://supertaste.tvbs.com.tw/infocard/28246",
-    summary: "一次嘗到紅糟、老酒與海味的馬祖家常菜。",
-    intro: "依嬤的店位於牛角聚落一帶，提供適合自由行旅客的風味套餐，也能多人共享紅糟炒飯、酒糟肉、淡菜與老酒蒸黃魚。從八八坑道過來順路，是認識馬祖餐桌最完整的一餐。",
-    tip: "電話 0912-261-414；建議預訂 11:00。午後仍要騎車與參加水上活動，勿飲酒，酒味料理也請酌量。",
-    duration: "70 分鐘", best: "11:00 午餐", map: "依嬤的店 馬祖"
-  },
-  {
-    id: "beihai", day: 1, order: "D1 · 04", name: "南竿北海坑道（日間）", area: "南竿", category: "必去景點", time: "12:30",
-    image: "https://celiamrg.com/wp-content/uploads/20210309225514_74.jpg",
-    credit: "瑄瑄＆G先生", source: "https://celiamrg.com/north-sea-tunnel/",
-    summary: "走進花崗岩腹地，感受水道與回音的尺度。",
-    intro: "北海坑道以人力開鑿於花崗岩中，井字形水道曾計畫停放軍用艇。如今可以沿步道環行，也能預約搖櫓或獨木舟；幽暗水面映著岩壁，是三份參考行程共同推薦的核心景點。",
-    tip: "8/20 官方暫列 08:30–17:00 開放，仍受現場潮位影響；白天先看坑道結構，晚上再回來搭搖櫓船。",
-    duration: "45–75 分鐘", best: "依潮汐", map: "南竿北海坑道"
-  },
-  {
-    id: "dahan", day: 1, order: "D1 · 05", name: "大漢據點", area: "南竿", category: "戰地遺跡", time: "13:35",
-    image: "https://www.matsu-news.gov.tw/uploads/news/20230808232205_29.jpg",
-    credit: "南竿鄉公所／馬祖日報", source: "https://www.nankan.gov.tw/chhtml/Detail/2221?mcid=86569",
-    summary: "沿海壁鑿出的三層坑道，曾扼守莒光水道。",
-    intro: "大漢據點緊貼鐵板海岸，由軍方在 1970 年代開鑿。坑道內保留機槍堡、砲陣地與生活空間，出口則直接面向海峽，讓人理解馬祖在冷戰時期的前線位置。",
-    tip: "與北海坑道位於同一區，步行串聯最省時間；坑道濕滑，穿止滑鞋。",
-    duration: "30–40 分鐘", best: "與北海坑道連走", map: "大漢據點"
-  },
-  {
-    id: "tiebao", day: 1, order: "D1 · 06", name: "鐵堡", area: "南竿", category: "海上堡壘", time: "14:30",
-    image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/cccf38b68b384ec7a8b9b03c14a527d0.jpg",
-    credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/islands/3",
-    summary: "一塊伸入海中的礁岩，被鑿成孤立的軍事堡壘。",
-    intro: "鐵堡位於仁愛村外海礁岩，外觀低伏、內部坑道狹長，曾是南竿重要的海上防禦據點。沿著步道走向海中央，軍事設施與海岸地形彼此交疊。",
-    tip: "海風強時注意帽子與隨身物品；狹窄階梯不宜急行。",
-    duration: "30–45 分鐘", best: "午後海景", map: "鐵堡 南竿"
-  },
-  {
-    id: "jinsha", day: 1, order: "D1 · 07", name: "津沙聚落", area: "南竿", category: "百年聚落", time: "15:30",
-    image: "https://api.taiwantravelmap.com/Google/image/PlaceImage/724/202602091702953.jpg",
-    credit: "台灣旅圖", source: "https://www.taiwantravelmap.com/taiwantravelmap/travel-724",
-    summary: "沿著石階走向海，尋找時間留下的紋理。",
-    intro: "津沙舊名金沙，閩東石厝依著山勢面海而建。聚落曾因漁業沒落而沉寂，修復後老宅成為民宿、咖啡與小館，仍保留安靜巷弄、酒甕與海灣沙灘。",
-    tip: "適合慢走，不必把每條巷弄走完；留一點時間坐在海邊看光線變化。",
-    duration: "60–90 分鐘", best: "午後至黃昏", map: "津沙聚落"
-  },
-  {
-    id: "mazu-statue", day: 1, order: "D1 · 08", name: "媽祖巨神像", area: "南竿", category: "島嶼地標", time: "16:30",
-    image: "https://www.lnanews.com/imgnews/2017-08-07/e6s27xq2b86vbx1u5cv7koofe.jpg",
-    credit: "人間通訊社", source: "https://www.lnanews.com/news/105645",
-    summary: "28.8 公尺高的海上守護者，靜靜望向湄洲。",
-    intro: "巨神像由 365 塊花崗岩組成，高度 28.8 公尺，象徵馬祖四鄉五島總面積。沿階梯登上宗教文化園區，能同時看見信仰、海港與南竿西岸景色。",
-    tip: "下午光線較柔和；階梯較多，預留體力並注意強風。約 17:20 下山後，可在馬港周邊散步至晚餐時間。",
-    duration: "45–60 分鐘", best: "夕陽前", map: "媽祖巨神像 南竿"
-  },
-  {
-    id: "dazhong", day: 1, order: "D1 · 09", name: "大眾飲食店", area: "南竿馬港", category: "追淚前晚餐", time: "18:00",
-    image: "https://pic.pimg.tw/olina155/1695015072-3815509577-g.jpg",
-    credit: "鏡沃小吃部（老酒麵線料理示意）", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods/2337",
-    summary: "18:00 在馬港吃晚餐，18:50 結束後從容前往北海坑道。",
-    intro: "大眾飲食店是馬港老字號家常小館，從媽祖巨神像下來即可順路用餐。這一餐以魚麵、炒飯、魚丸湯或家常菜為主，控制份量，晚上搭船會更舒服。",
-    tip: "電話 0836-22185；訂位時確認 18:00 用餐並於 18:50 前結束。19:05 從馬港出發，預計 19:20–19:25 抵達南竿遊客中心。夜間搖櫓前勿飲酒，避免酒味濃的料理。",
-    duration: "50 分鐘", best: "18:00 晚餐", map: "大眾飲食店 馬祖村"
-  },
-  {
-    id: "beihai-night", day: 1, order: "D1 · 10", name: "北海坑道夜間搖櫓船", area: "南竿", category: "藍眼淚體驗 · 已預約", time: "19:40 報到 · 20:00 場",
-    image: "https://www.matsu-news.gov.tw/uploads/news/205385.jpg",
-    credit: "馬祖日報", source: "https://www.matsu-nsa.gov.tw/zh-TW/festivals/5",
-    summary: "20:00 梯次預約成功，19:40 前抵達坑道內報到。",
-    intro: "夜間搖櫓船在完全黑暗的北海坑道水域進行，由船夫操槳前進。水中的夜光藻受擾動時可能發出藍光，與白天觀察坑道工程是截然不同的體驗。",
-    tip: "官方已確認 20:00 梯次。請於 19:40 前至南竿遊客中心旁的北海坑道內報到、購票並參加行前說明。活動前勿飲酒、勿開閃光燈；藍眼淚是自然現象，亮度無法保證。",
-    duration: "15–20 分鐘", best: "20:00 已預約", map: "南竿北海坑道"
-  },
-  {
-    id: "daqiu", day: 2, order: "D2 · 01", name: "大坵島", area: "北竿外島", category: "梅花鹿島", time: "08:30 船班",
-    image: "images/daqiu.jpg",
-    credit: "馬祖日報／景點家", source: "https://www.matsu-news.gov.tw/news/article/200439",
-    summary: "搭十分鐘的船，去一座梅花鹿比人多的島。",
-    intro: "大坵曾有居民與駐軍，如今成為梅花鹿自由生活的無人島。沿環島步道行走，可以近距離觀察鹿群、廢棄聚落與海蝕地形，是八月最有季節感的體驗。",
-    tip: "船班受海象影響，務必預訂；不追逐、不觸摸鹿角，也不要餵食自帶食物。",
-    duration: "約 2 小時", best: "08:30 早班", map: "大坵島"
-  },
-  {
-    id: "qiaozi", day: 2, order: "D2 · 02", name: "橋仔聚落", area: "北竿", category: "漁村信仰", time: "10:50",
-    image: "https://g.udn.com.tw/upfiles/B_CE/cetustar/PSN_PHOTO/680/f_28799680_1.jpg",
-    credit: "鍾小殷的幸福玩樂趣", source: "https://blog.udn.com/cetustar/182293024",
-    summary: "依山臨海的小漁村，廟宇數量比居民還醒目。",
-    intro: "橋仔村位於北竿北側，過去因漁業興盛而人口密集，也形成豐富的廟宇信仰。石屋、陡坡與漁港構成緊湊聚落，適合在大坵返航後順遊。",
-    tip: "可品嘗橋仔阿婆黃金餃；村內坡度大，停車後用步行慢慢逛。",
-    duration: "45–60 分鐘", best: "大坵回程後", map: "橋仔聚落 北竿"
-  },
-  {
-    id: "qinwo", day: 2, order: "D2 · 03", name: "芹沃咖啡烘焙館", area: "北竿芹壁", category: "海景午餐", time: "12:00",
-    image: "https://cdn.walkerland.com.tw/images/upload/poi/p144947/m96563/efa6fc0849d98125e830f7c0be61a5ebfecfc0bd.jpg",
-    credit: "WalkerLand（芹沃咖啡烘焙館）", source: "https://supertaste.tvbs.com.tw/infocard/15052",
-    summary: "在芹壁海景前分享披薩、淡菜與現烤麵包。",
-    intro: "芹沃把老酒、淡菜等馬祖風味放進披薩與創意料理，面海座位也讓午餐自然成為芹壁散步的開場。推薦披薩、蒜辣橄欖蝦、手作麵包與無酒精飲品。",
-    tip: "電話 0836-56099；午餐目前為 11:00–13:30，建議預訂 12:00 海景座位並準時抵達。",
-    duration: "80 分鐘", best: "12:00 午餐", map: "芹沃咖啡烘焙館"
-  },
-  {
-    id: "qinbi", day: 2, order: "D2 · 04", name: "芹壁聚落", area: "北竿", category: "必去景點", time: "13:20",
-    image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/%E8%8A%B9%E5%A3%81%E8%81%9A%E8%90%BD_%E5%8C%97%E7%AB%BF_2025_6.jpg",
-    credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/album/1008",
-    summary: "石屋沿山層疊，是最適合把速度放慢的地方。",
-    intro: "芹壁是馬祖保存最完整的閩東建築聚落之一。花崗岩石屋、紅瓦屋頂與海岸階梯依山展開，轉角不時露出龜島與藍色海面，被稱為馬祖的地中海。",
-    tip: "安排 13:20–15:20 散步與喝咖啡；15:20 接著前往附近的馬祖播音站。",
-    duration: "2 小時", best: "午後", map: "芹壁聚落"
-  },
-  {
-    id: "broadcast", day: 2, order: "D2 · 05", name: "馬祖播音站", area: "北竿", category: "戰地記憶", time: "15:20",
-    image: "https://www.matsu-news.gov.tw/uploads/news/205820.JPG",
-    credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/136554",
-    summary: "巨型喇叭留下前線時代跨海傳聲的記憶。",
-    intro: "冷戰時期，馬祖播音站曾向對岸進行心戰廣播。今日打卡點以巨型綠色喇叭重現那段歷史，強烈造型既荒謬又真實，是理解戰地日常的有趣入口。",
-    tip: "安排 15:20–15:40；目前可拍照的是芹壁候車亭旁的造景，並非山頂舊站本體。",
-    duration: "20 分鐘", best: "芹壁後順遊", map: "馬祖播音站 北竿"
-  },
-  {
-    id: "bishan", day: 2, order: "D2 · 06", name: "壁山觀景台", area: "北竿", category: "島嶼展望", time: "15:50",
-    image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bishan_Lookout%2C_Beigan%2C_Matsu%2C_Taiwan.JPG",
-    credit: "Shoestring／Wikimedia Commons（CC BY-SA 4.0）", source: "https://commons.wikimedia.org/wiki/File:Bishan_Lookout,_Beigan,_Matsu,_Taiwan.JPG",
-    summary: "站上北竿最高點，把機場、塘岐與離島一次收入眼底。",
-    intro: "壁山海拔約 298 公尺，是北竿視野最開闊的制高點。天氣清朗時可俯瞰塘岐、后沃、北竿機場，並遠望大坵、高登等島嶼，最適合用一張全景照讀懂北竿地形。",
-    tip: "安排 15:50–16:15，從觀景台停車處短暫停留即可；步道路段風勢強時請勿勉強久留。",
-    duration: "25 分鐘", best: "能見度佳時", map: "壁山觀景台 北竿"
-  },
-  {
-    id: "war-peace", day: 2, order: "D2 · 07", name: "戰爭和平紀念公園主題館", area: "北竿", category: "戰地記憶", time: "16:25",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg/1280px-2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg",
-    credit: "玄史生／Wikimedia Commons（CC BY-SA 2.0）", source: "https://commons.wikimedia.org/wiki/File:2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_(9677541143).jpg",
-    summary: "從軍事據點與史料，理解馬祖如何由前線走向日常。",
-    intro: "園區以軍事營舍、武器展示與主題館保存馬祖戰地政務時期的記憶。走過播音站與壁山後再到這裡，能把抽象的冷戰歷史接回島上居民的生活經驗。",
-    tip: "安排 16:25–17:05，17:10 離開前往塘岐。8 月開放至 17:30，但每週三休館；若臨時休館則改走戶外園區。",
-    duration: "40 分鐘", best: "閉館前", map: "戰爭和平紀念公園主題館"
-  },
-  {
-    id: "longfu", day: 2, order: "D2 · 08", name: "龍福山莊", area: "北竿塘岐", category: "海鮮晚餐", time: "17:30",
-    image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1400&q=82",
-    credit: "Unsplash（海鮮料理示意）", source: "https://unsplash.com/",
-    summary: "用一鍋澎湃海鮮，替北竿的一天收尾。",
-    intro: "龍福山莊是三份參考行程都出現的北竿停靠點，招牌海鮮痛風鍋集合淡菜、鮮蝦、小卷與當季漁獲。多人同行最適合預訂，共享的形式也很有旅行感。",
-    tip: "17:10 從戰爭和平紀念公園出發。電話 0836-55077；4 人以上可詢問痛風鍋，2–3 人建議點一般合菜。食材依當日漁獲調整，務必預訂。",
-    duration: "90 分鐘", best: "晚餐", map: "龍福山莊 北竿"
-  },
-  {
-    id: "banli", day: 3, order: "D3 · 01", name: "坂里大宅", area: "北竿", category: "閩東建築", time: "08:30",
-    image: "https://storage.googleapis.com/matsu/images/article_20267_1939df612b911e1c3b7551b66beea2ef.jpg",
-    credit: "馬祖記憶庫", source: "https://matsumemory.tw/articles/20267",
-    summary: "走進百年古厝，看石與木如何守住一個家。",
-    intro: "坂里大宅建於清代，是北竿少見保存完整的傳統大宅。厚實石牆、木構天井與家族生活空間，呈現閩東建築因應海風與島嶼氣候的智慧。",
-    tip: "安排 08:30–09:15；清晨人較少、光影柔和，參觀時降低音量並尊重館舍規範。",
-    duration: "45 分鐘", best: "上午", map: "坂里大宅"
-  },
-  {
-    id: "banli-beach", day: 3, order: "D3 · 02", name: "坂里沙灘", area: "北竿", category: "海岸散步", time: "09:20",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg/1280px-Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg",
-    credit: "lienyuan lee／Wikimedia Commons（CC BY 3.0）", source: "https://commons.wikimedia.org/wiki/File:Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg",
-    summary: "走出百年大宅，幾步路就到北竿最平緩的沙岸。",
-    intro: "坂里沙灘就在坂里大宅旁，寬闊沙地與平緩潮線很適合晨間散步。從傳統石厝轉進海岸，只需短短幾分鐘，卻能看到北竿聚落與海景緊密相連的另一面。",
-    tip: "安排 09:20–09:50；以散步與拍照為主，不下水並留意潮汐、浪況。",
-    duration: "30 分鐘", best: "上午", map: "坂里沙灘"
-  },
-  {
-    id: "short-slope", day: 3, order: "D3 · 03", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", time: "10:05",
-    image: "https://cdn.4travel.jp/img/thumbnails/imk/tips_pict/19/52/36/650x450_19523641.jpg?updated_at=1699245951",
-    credit: "4travel", source: "https://4travel.jp/os_shisetsu/10436986",
-    summary: "最後從高處回望，讀懂北竿的山海輪廓。",
-    intro: "短坡山一帶視野開闊，可以從高處觀察北竿聚落、機場與海岸相互依存的地形。它不像芹壁華麗，更像一個讓旅程慢慢沉澱的觀景停靠。",
-    tip: "安排 10:05–10:35，10:40 回塘岐休息並準備午餐；風大時避免靠近邊坡。",
-    duration: "30 分鐘", best: "能見度佳時", map: "短坡山觀景台 北竿"
-  },
-  {
-    id: "apo-fish-noodle", day: 3, order: "D3 · 04", name: "阿婆魚麵店", area: "北竿塘岐", category: "回程午餐", time: "11:00",
-    image: "https://cdn.walkerland.com.tw/images/upload/poi/p116351/m26624/beb886bf35b10523538fb706b7ed78483f415647.jpg",
-    credit: "WalkerLand（阿婆魚麵店）", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods/2295",
-    summary: "用一碗手工魚麵，替北竿旅程留下鮮甜收尾。",
-    intro: "魚麵把魚肉揉入麵糰，經過桿平、切麵與乾燥等工序，可煮湯、乾炒或炸成零嘴。阿婆魚麵店位在塘岐，午餐後前往機場或塘後道都很方便。",
-    tip: "安排 11:00–11:50；電話 0836-56539，官方目前列 11:00–13:00，建議開店即抵達。可點魚麵、魚丸、魚餃與炸魚麵。",
-    duration: "50 分鐘", best: "11:00 午餐", map: "阿婆魚麵店 北竿"
-  },
-  {
-    id: "tanghou", day: 3, order: "D3 · 05", name: "塘後道沙灘", area: "北竿", category: "海岸散步", time: "12:00",
-    image: "https://cdn.walkerland.com.tw/images/upload/article/2021/12/m121434/2467bf0f09fed1712e10103709a7d7c8d247c0ed.jpg",
-    credit: "WalkerLand", source: "https://www.walkerland.com.tw/article/view/314542",
-    summary: "在機場旁看海，替跳島旅程留一段空白。",
-    intro: "塘後道沙灘位於塘岐與后沃之間，緊鄰北竿機場跑道。沙洲、海浪與飛機起降形成少見景觀，也是回程前最不費力、最適合散步的海邊。",
-    tip: "安排 12:00–12:40，不建議下水；12:50–13:30 到塘岐買伴手禮，13:40 回住宿處取行李與還車，14:30 前抵達白沙港。",
-    duration: "40 分鐘", best: "午餐後", map: "塘後道沙灘"
-  },
-  {
-    id: "baisha-nangan-flight", day: 3, order: "D3 · 06", name: "白沙港 → 南竿機場", area: "北竿至南竿", category: "回程交通", time: "15:20 船班 · 18:20 起飛",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg/1020px-Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg",
-    credit: "Terry850324／Wikimedia Commons（CC BY-SA 4.0）", source: "https://commons.wikimedia.org/wiki/File:Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg",
-    summary: "搭 15:20 船回南竿，為 18:20 班機留足轉乘緩衝。",
-    intro: "白沙港是北竿的海上門戶。這段回程先搭島際船抵達南竿福澳港，再轉乘計程車前往南竿機場；不把最後一班船壓得太緊，才能從容完成報到與行李托運。",
-    tip: "14:30 前抵達白沙港；15:20 開船，約 15:40 抵達福澳港，再前往南竿機場，目標 16:10 前抵達。16:00 只作備案，不建議搭 16:30 以後船班。8/21 晚上及 8/22 早上再次確認海象與船班。",
-    duration: "約 3 小時", best: "15:20 船班", map: "北竿白沙港"
-  }
+const media = {
+  keelung: { image: "https://www.settour.com.tw/ss_img/poi/20210302/ef4a472b-0f90-46c3-9c88-71fb6d3df9d5.jpeg", credit: "東南旅遊（基隆廟口夜市）", source: "https://travel.klcg.gov.tw/TourContent.aspx?n=8059&s=558&sms=12550" },
+  ferry: { image: "https://www.matsu-news.gov.tw/uploads/news/20230415224709_82.jpg", credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/209339" },
+  fuao: { image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fuao%20Harbour%20%E7%A6%8F%E6%BE%B3%E6%B8%AF%20-%20panoramio.jpg?width=1200", credit: "lienyuan lee／Wikimedia Commons（CC BY 3.0）", source: "https://commons.wikimedia.org/wiki/File:Fuao_Harbour_%E7%A6%8F%E6%BE%B3%E6%B8%AF_-_panoramio.jpg" },
+  market: { image: "https://img.fun-life.com.tw/mazu/lion-market/lion-market.jpg", credit: "捲毛阿偉", source: "https://awei45.tw/lion-market/" },
+  beihai: { image: "https://celiamrg.com/wp-content/uploads/20210309225514_74.jpg", credit: "瑄瑄＆G先生", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1463" },
+  dahan: { image: "https://www.matsu-news.gov.tw/uploads/news/20230808232205_29.jpg", credit: "南竿鄉公所／馬祖日報", source: "https://www.nankan.gov.tw/chhtml/Detail/2221?mcid=86569" },
+  snack: { image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（傳統點心示意）", source: "https://www.tripadvisor.com.tw/Restaurant_Review-g1731586-d3200297-Reviews-A_Zhu_Di_Bing-Matsu.html" },
+  tiebao: { image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/cccf38b68b384ec7a8b9b03c14a527d0.jpg", credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/islands/3" },
+  jinsha: { image: "https://api.taiwantravelmap.com/Google/image/PlaceImage/724/202602091702953.jpg", credit: "台灣旅圖", source: "https://www.taiwantravelmap.com/taiwantravelmap/travel-724" },
+  stay: { image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（旅宿示意）", source: "https://unsplash.com/" },
+  statue: { image: "https://www.lnanews.com/imgnews/2017-08-07/e6s27xq2b86vbx1u5cv7koofe.jpg", credit: "人間通訊社", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1466" },
+  cafe: { image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（海景咖啡示意）", source: "https://unsplash.com/" },
+  dinner: { image: "https://pic.pimg.tw/olina155/1695015072-3815509577-g.jpg", credit: "在地料理示意", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods" },
+  bakery: { image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（烘焙點心示意）", source: "https://unsplash.com/" },
+  daqiu: { image: "images/daqiu.jpg", credit: "馬祖日報／景點家", source: "https://www.matsu-nsa.gov.tw/zh-TW/transport/island" },
+  baisha: { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg/1020px-Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg", credit: "Terry850324／Wikimedia Commons（CC BY-SA 4.0）", source: "https://commons.wikimedia.org/wiki/File:Baisha_Harbor_%E5%8C%97%E7%AB%BF%E7%99%BD%E6%B2%99%E6%B8%AF_20250913.jpg" },
+  apo: { image: "https://cdn.walkerland.com.tw/images/upload/poi/p116351/m26624/beb886bf35b10523538fb706b7ed78483f415647.jpg", credit: "WalkerLand（阿婆魚麵店）", source: "https://www.matsu-nsa.gov.tw/zh-TW/foods/2295" },
+  shortSlope: { image: "https://cdn.4travel.jp/img/thumbnails/imk/tips_pict/19/52/36/650x450_19523641.jpg?updated_at=1699245951", credit: "4travel", source: "https://4travel.jp/os_shisetsu/10436986" },
+  warPeace: { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg/1280px-2013_0815_%E9%A6%AC%E7%A5%96_%E5%8C%97%E7%AB%BF56_%289677541143%29.jpg", credit: "玄史生／Wikimedia Commons（CC BY-SA 2.0）", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1452" },
+  tanghou: { image: "https://cdn.walkerland.com.tw/images/upload/article/2021/12/m121434/2467bf0f09fed1712e10103709a7d7c8d247c0ed.jpg", credit: "WalkerLand", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1444" },
+  bishan: { image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bishan_Lookout%2C_Beigan%2C_Matsu%2C_Taiwan.JPG", credit: "Shoestring／Wikimedia Commons（CC BY-SA 4.0）", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1446" },
+  qiaozi: { image: "https://g.udn.com.tw/upfiles/B_CE/cetustar/PSN_PHOTO/680/f_28799680_1.jpg", credit: "鍾小殷的幸福玩樂趣", source: "https://blog.udn.com/cetustar/182293024" },
+  qinwo: { image: "https://cdn.walkerland.com.tw/images/upload/poi/p144947/m96563/efa6fc0849d98125e830f7c0be61a5ebfecfc0bd.jpg", credit: "WalkerLand（芹沃咖啡烘焙館）", source: "https://supertaste.tvbs.com.tw/infocard/15052" },
+  qinbi: { image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/%E8%8A%B9%E5%A3%81%E8%81%9A%E8%90%BD_%E5%8C%97%E7%AB%BF_2025_6.jpg", credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/album/1008" },
+  broadcast: { image: "https://www.matsu-news.gov.tw/uploads/news/205820.JPG", credit: "馬祖日報", source: "https://www.matsu-news.gov.tw/news/article/136554" },
+  banli: { image: "https://storage.googleapis.com/matsu/images/article_20267_1939df612b911e1c3b7551b66beea2ef.jpg", credit: "馬祖記憶庫", source: "https://matsumemory.tw/articles/20267" },
+  banliBeach: { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg/1280px-Banli_Beach_%E5%9D%82%E9%87%8C%E6%B2%99%E7%81%98_-_panoramio.jpg", credit: "lienyuan lee／Wikimedia Commons（CC BY 3.0）", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1443" },
+  yima: { image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（閩式料理示意）", source: "https://supertaste.tvbs.com.tw/infocard/28246" },
+  tunnel88: { image: "https://www.matsu-nsa.gov.tw/api/uploads/attractions/d20633a2cecb4d6d81f07e16a49417e2.jpg", credit: "馬祖國家風景區", source: "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1457" },
+  airport: { image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Matsu%20Nangan%20Airport%20%E9%A6%AC%E7%A5%96%E5%8D%97%E7%AB%BF%E6%A9%9F%E5%A0%B4.jpg?width=1200", credit: "riNux／Wikimedia Commons", source: "https://commons.wikimedia.org/wiki/File:Matsu_Nangan_Airport_%E9%A6%AC%E7%A5%96%E5%8D%97%E7%AB%BF%E6%A9%9F%E5%A0%B4.jpg" },
+  plane: { image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（飛行示意）", source: "https://unsplash.com/" }
+};
+
+function makeStop(day, index, config) {
+  const asset = media[config.media] || media.stay;
+  return {
+    ...config,
+    day,
+    order: `D${day + 1} · ${String(index + 1).padStart(2, "0")}`,
+    image: asset.image,
+    credit: asset.credit,
+    source: asset.source,
+    intro: config.intro || config.summary,
+    tip: config.tip || "依現場狀況彈性調整，移動時請預留停車與找路時間。",
+    best: config.best || config.time,
+    map: config.map || config.name
+  };
+}
+
+const itinerary = [
+  [
+    { id: "d1-keelung", time: "20:00", name: "基隆廟口夜市", area: "基隆", category: "晚餐", duration: "60 分鐘", media: "keelung", summary: "先吃港都小吃，再前往碼頭展開夜航。", intro: "基隆廟口夜市聚集鼎邊趖、天婦羅、滷肉飯與營養三明治。把晚餐安排在登船前，既能避免船上餐食選擇有限，也讓旅行從港口滋味開始。", tip: "21:00 左右離開夜市前往西岸旅客碼頭；容易暈船者避免吃得太油。", map: "基隆廟口夜市" },
+    { id: "d1-new-taima", time: "21:30", name: "新臺馬輪", area: "基隆 → 南竿", category: "夜航交通", duration: "約 9.5 小時", media: "ferry", summary: "21:30 辦理登船，22:00 開航，睡醒抵達南竿。", intro: "新臺馬輪由基隆夜航馬祖。8 月 19 日為單號日，依單馬雙東原則先抵南竿；這一晚既是交通，也算旅程的第一晚住宿。", tip: "21:30 依票面與現場指示辦理登船；準備暈船藥、薄外套及隔天一早會用到的隨身物品。", best: "21:30 登船", map: "基隆西岸旅客碼頭" }
+  ],
+  [
+    { id: "d2-fuao-arrival", time: "07:00", name: "南竿福澳碼頭", area: "南竿", category: "抵達", duration: "25 分鐘", media: "fuao", summary: "下船領行李，正式開始南竿環島。", tip: "先確認機車或接送交車位置，再前往介壽市場。", map: "南竿福澳港" },
+    { id: "d2-jieshou", time: "07:35", name: "介壽獅子市場", area: "南竿介壽", category: "早餐", duration: "70 分鐘", media: "market", summary: "用鼎邊糊、虫弟餅與老酒麵線喚醒早晨。", intro: "介壽獅子市場是南竿最有生活感的清晨據點。一樓有蔬果與漁獲，二樓聚集馬祖早餐小吃。", tip: "市場越早品項越齊；多帶一些現金，方便分食不同攤位。" },
+    { id: "d2-beihai-day", time: "09:15", name: "北海坑道（日間）", area: "南竿仁愛", category: "戰地坑道", duration: "70 分鐘", media: "beihai", summary: "先看坑道尺度與潮汐水道，晚上再回來搭搖櫓船。", intro: "北海坑道以人力開鑿於花崗岩中，井字形水道曾規劃停放軍用艇。白天沿步道觀察工程，晚上則會以完全不同的光線體驗水域。", tip: "官方原則 08:30–17:00 開放，但步道會受潮汐影響；出發前向南竿遊客中心確認。" },
+    { id: "d2-dahan", time: "10:40", name: "大漢據點", area: "南竿仁愛", category: "戰地遺跡", duration: "25 分鐘", media: "dahan", summary: "沿海壁鑿出的多層坑道，曾扼守莒光水道。", intro: "大漢據點緊貼鐵板海岸，坑道保留砲陣地與生活空間，出口直接面向海峽。", tip: "官方 7/13 曾公告大漢及鐵堡暫停開放；請在 8/19 再確認，未恢復時改在外圍看海並把時間留給阿珠虫弟餅。" },
+    { id: "d2-azhu", time: "11:20", name: "鐵板 阿珠虫弟餅", area: "南竿仁愛", category: "在地點心", duration: "15 分鐘", media: "snack", summary: "趁熱吃一顆酥脆虫弟餅，也可加點紅糟雞串。", intro: "虫弟餅以米漿與黃豆粉包住蔬菜、冬粉與肉餡後油炸，是馬祖代表性傳統點心。", tip: "現炸需要等候，若排隊過長可先電話詢問或外帶；別在正餐前一次點太多。", map: "鐵板 阿珠虫弟餅" },
+    { id: "d2-tiebao", time: "11:40", name: "鐵堡（南竿 51 據點）", area: "南竿仁愛", category: "海上堡壘", duration: "40 分鐘", media: "tiebao", summary: "沿步道走向伸入海中的低伏軍事堡壘。", intro: "鐵堡位於仁愛村外海礁岩，內部坑道狹長，軍事設施與海岸地形緊密交疊。", tip: "官方 7/13 曾公告大漢及鐵堡暫停開放；若仍未開放，改至鐵堡外圍遠眺後提早前往津沙。" },
+    { id: "d2-jinsha", time: "12:35", name: "津沙聚落", area: "南竿津沙", category: "百年聚落", duration: "80 分鐘", media: "jinsha", summary: "在石厝巷弄與海灣之間慢走，留一段午后空白。", intro: "津沙舊名金沙，閩東石厝依山面海。老宅、酒甕與沙灘保留聚落因漁業興衰留下的時間感。", tip: "正午炎熱，走主要巷弄與海灣即可；記得補水、防曬。" },
+    { id: "d2-muguang-checkin", time: "14:10", name: "沐光民宿", area: "南竿", category: "入住休息", duration: "約 2 小時", media: "stay", summary: "辦理入住、放行李，避開午後最曬時段。", tip: "確認晚間回程門禁、停車位置與隔天 07:00 出發安排。", map: "沐光民宿 馬祖" },
+    { id: "d2-mazu-statue", time: "16:20", name: "媽祖巨神像", area: "南竿馬港", category: "島嶼地標", duration: "30 分鐘", media: "statue", summary: "走上宗教文化園區，看 28.8 公尺高的海上守護者。", intro: "巨神像由 365 塊花崗岩構成，高度 28.8 公尺，象徵馬祖四鄉五島總面積與天天平安。", tip: "階梯較多，控制停留時間並留意強風；16:50 左右往下走接天后宮。" },
+    { id: "d2-mazu-temple", time: "16:55", name: "馬祖境天后宮", area: "南竿馬港", category: "宗教文化", duration: "30 分鐘", media: "statue", summary: "走進馬祖信仰核心，感受島名與媽祖傳說的連結。", intro: "馬祖境天后宮是馬祖重要信仰中心，相傳媽祖靈穴位於此地，也是理解馬祖地名與海洋信仰的關鍵停靠。", tip: "參拜時保持安靜；若巨神像逗留較久，這裡仍至少保留 20 分鐘。" },
+    { id: "d2-seesea", time: "17:40", name: "小柒咖啡｜無事 SEESEA", area: "南竿馬港", category: "咖啡休息", duration: "45 分鐘", media: "cafe", summary: "在晚餐前喝杯咖啡、看海，把步調放慢。", tip: "以飲品與簡單甜點為主，18:25 前離開前往大眾飲食店；出發前再確認當日營業。", map: "小柒咖啡 無事 SEESEA 馬祖" },
+    { id: "d2-dazhong", time: "18:45", name: "馬港大眾飲食店", area: "南竿馬港", category: "晚餐", duration: "45 分鐘", media: "dinner", summary: "用魚麵、炒飯或家常菜快速吃完追淚前晚餐。", intro: "大眾飲食店是馬港家常小館，適合在前往北海坑道前吃一頓份量好控制的晚餐。", tip: "已預約 20:00 搖櫓船，建議 19:30 前結帳離開；勿飲酒，並預先叫好車或確認騎乘路線。", map: "大眾飲食店 馬祖村" },
+    { id: "d2-beihai-night", time: "19:40 報到", name: "北海坑道夜間搖櫓船", area: "南竿仁愛", category: "藍眼淚體驗 · 已預約", duration: "約 60 分鐘", media: "beihai", summary: "20:00 梯次預約成功，19:40 前到坑道內報到。", intro: "夜間搖櫓船在黑暗的北海坑道水域進行，水中夜光藻受擾動時可能發出藍光。", tip: "夥伴表列 19:55，但官方帳號已要求提前 20 分鐘；網站保留 19:40 報到、購票與行前說明。藍眼淚為自然現象，亮度無法保證。", best: "20:00 已預約", map: "南竿北海坑道" },
+    { id: "d2-muguang-return", time: "20:55", name: "沐光民宿", area: "南竿", category: "住宿", duration: "過夜", media: "stay", summary: "結束追淚行程，回民宿整理並提早休息。", tip: "整理隔天跳島行李，船票、證件、防曬與飲水放進隨身包。", map: "沐光民宿 馬祖" }
+  ],
+  [
+    { id: "d3-muguang-depart", time: "07:00", name: "沐光民宿", area: "南竿", category: "出發", duration: "80 分鐘", media: "stay", summary: "退房出發，前往餅店與福澳碼頭。", tip: "確認行李都帶上，並再次查看大坵船班與海象。", map: "沐光民宿 馬祖" },
+    { id: "d3-meiweixuan", time: "08:30", name: "美味軒餅店", area: "南竿", category: "早餐／補給", duration: "20 分鐘", media: "bakery", summary: "買餅、飲水與船上補給，準備大坵行程。", tip: "停留以外帶為主，08:50 離開才能準時到碼頭報到。", map: "美味軒餅店 馬祖" },
+    { id: "d3-fuao-depart", time: "09:00 報到", name: "南竿福澳碼頭", area: "南竿", category: "大坵船班", duration: "30 分鐘", media: "fuao", summary: "09:00 報到，銜接官方 09:30 南竿往大坵旺季船班。", tip: "船班受海象與成行人數影響，務必持訂位資料提前報到；官方預約電話 0836-23255。", best: "09:30 開船", map: "南竿福澳港" },
+    { id: "d3-daqiu", time: "10:00", name: "大坵島", area: "北竿外島", category: "梅花鹿島", duration: "100 分鐘", media: "daqiu", summary: "沿環島步道尋鹿，看無人島聚落與海蝕地形。", intro: "大坵曾有居民與駐軍，如今成為梅花鹿自由生活的無人島。環島步道能近距離觀察鹿群與海岸。", tip: "不追逐、不觸摸鹿角，也不要餵自帶食物；11:30 開始往碼頭走，官方船班 11:40 返航。" },
+    { id: "d3-baisha-arrival", time: "12:10", name: "北竿白沙港", area: "北竿", category: "抵達／取車", duration: "10 分鐘", media: "baisha", summary: "大坵 11:40 返航，約 12:10 抵達白沙港開始北竿環島。", tip: "夥伴表列 12:00；依官方旺季船班調整為約 12:10 抵達，取車後直接前往塘岐。", map: "北竿白沙港" },
+    { id: "d3-apo", time: "12:20", name: "阿婆魚麵店", area: "北竿塘岐", category: "午餐", duration: "50 分鐘", media: "apo", summary: "用一碗手工魚麵補充跳島後的體力。", intro: "魚麵把魚肉揉入麵糰，可煮湯、乾炒或炸成零嘴；阿婆魚麵店是塘岐代表性小吃。", tip: "抵達時間很緊，建議先電話確認座位與供餐；可點魚麵、魚丸、魚餃與炸魚麵。" },
+    { id: "d3-short-slope", time: "13:20", name: "短坡山觀景台", area: "北竿", category: "島嶼展望", duration: "30 分鐘", media: "shortSlope", summary: "從高處看北竿機場、塘岐與海岸輪廓。", tip: "風大時避免靠近邊坡，拍完主要視角就出發。" },
+    { id: "d3-war-peace", time: "14:00", name: "戰爭和平紀念公園主題館", area: "北竿", category: "戰地記憶", duration: "30 分鐘", media: "warPeace", summary: "用史料與軍事展示理解馬祖由前線走向日常。", tip: "週五正常開館；夏季下午 13:30–17:30，30 分鐘以主題館重點展區為主。" },
+    { id: "d3-tanghou", time: "14:40", name: "塘後道沙灘", area: "北竿", category: "海岸散步", duration: "30 分鐘", media: "tanghou", summary: "在機場旁的沙洲短暫散步，看海與飛機交錯。", tip: "不下水，以拍照和吹海風為主；15:10 離開前往壁山。" },
+    { id: "d3-bishan", time: "15:20", name: "壁山觀景臺", area: "北竿", category: "制高點", duration: "20 分鐘", media: "bishan", summary: "站上北竿最高點，把機場、聚落與離島收入眼底。", tip: "從停車處短停即可；能見度不佳時縮短停留，把時間留給橋仔。" },
+    { id: "d3-qiaozi", time: "15:50", name: "橋仔聚落", area: "北竿", category: "漁村信仰", duration: "60 分鐘", media: "qiaozi", summary: "在陡坡石屋與廟宇之間，讀一座漁村的信仰密度。", tip: "村內坡度大，停車後以步行慢慢逛；17:00 前離開前往芹壁。" },
+    { id: "d3-qinwo", time: "17:00", name: "芹沃咖啡烘焙館 Qinwo Bakery", area: "北竿芹壁", category: "晚餐／咖啡", duration: "50 分鐘", media: "qinwo", summary: "在海景前吃披薩、淡菜與現烤麵包。", intro: "芹沃把老酒、淡菜等馬祖風味放進披薩與創意料理，面海座位適合在芹壁散步前先用餐。", tip: "務必事先確認 17:00 是否可供餐並預訂座位；18:00 準時進芹壁看夕色。" },
+    { id: "d3-qinbi", time: "18:00", name: "芹壁聚落", area: "北竿", category: "夕照聚落", duration: "85 分鐘", media: "qinbi", summary: "在石屋階梯間看傍晚光線與龜島海景。", intro: "芹壁是馬祖保存完整的閩東聚落之一。花崗岩石屋、紅瓦屋頂與海岸階梯依山展開。", tip: "天黑後石階較暗，19:20 左右往住宿移動；帶一盞小燈或使用手機照明。" },
+    { id: "d3-dazhai-checkin", time: "19:35", name: "大宅三院青年旅舍／背包客棧", area: "北竿坂里", category: "住宿", duration: "過夜", media: "stay", summary: "入住北竿石厝旅宿，整理隔天返程行李。", tip: "確認隔天早餐、行李寄放或接送與白沙港還車安排。", map: "大宅三院青年旅舍 北竿" }
+  ],
+  [
+    { id: "d4-dazhai-depart", time: "07:00", name: "大宅三院青年旅舍／背包客棧", area: "北竿坂里", category: "晨間出發", duration: "30 分鐘", media: "stay", summary: "輕裝晨遊，行李先留在住宿處。", tip: "帶雨具與證件，07:30 左右前往播音站。", map: "大宅三院青年旅舍 北竿" },
+    { id: "d4-broadcast", time: "07:40", name: "馬祖播音站", area: "北竿芹壁", category: "戰地記憶", duration: "25 分鐘", media: "broadcast", summary: "巨型喇叭留下前線時代跨海傳聲的記憶。", intro: "冷戰時期馬祖播音站曾向對岸進行心戰廣播，今日可見的巨型綠色喇叭造景成為戰地記憶入口。", tip: "可拍照的是芹壁候車亭旁造景，並非山頂舊站本體；早晨停留 20–25 分鐘即可。" },
+    { id: "d4-banli-breakfast", time: "08:20", name: "坂里早餐店", area: "北竿坂里", category: "早餐", duration: "30 分鐘", media: "bakery", summary: "回坂里吃早餐，補足最後半天體力。", tip: "出發前請住宿協助確認店家名稱、位置與週六營業狀況。", map: "坂里早餐店 北竿" },
+    { id: "d4-dazhai-luggage", time: "09:00", name: "大宅三院青年旅舍／背包客棧", area: "北竿坂里", category: "整理行李", duration: "35 分鐘", media: "stay", summary: "回住宿整理、退房，確認港口接送或還車。", tip: "只帶隨身小包走坂里景點，大件行李請先與旅宿確認寄放與送港方式。", map: "大宅三院青年旅舍 北竿" },
+    { id: "d4-banli-house", time: "09:50", name: "坂里大宅", area: "北竿坂里", category: "閩東建築", duration: "35 分鐘", media: "banli", summary: "走進百年古厝，看石與木如何守住一個家。", intro: "坂里大宅建於清代，厚實石牆、木構天井與生活空間呈現閩東建築因應海風的智慧。", tip: "參觀時降低音量；10:25 左右離開往附近黃金地瓜餃。" },
+    { id: "d4-sweet-potato", time: "10:40", name: "坂里古厝黃金地瓜餃", area: "北竿坂里", category: "傳統點心", duration: "15 分鐘", media: "snack", summary: "吃一份花生芝麻餡的地瓜餃，替北竿留下甜味。", intro: "黃金地瓜餃以地瓜製成外皮，包入花生、芝麻與糖，可油炸，也能煮甜湯。", tip: "以外帶為主，先確認當日是否營業與是否需預訂。", map: "坂里古厝黃金地瓜餃" },
+    { id: "d4-banli-beach", time: "11:00", name: "坂里沙灘", area: "北竿坂里", category: "海岸散步", duration: "30 分鐘", media: "banliBeach", summary: "從古厝走到平緩沙岸，吹最後一段北竿海風。", tip: "不下水並留意浪況；11:30 準時離開取行李、還車與前往港口。" },
+    { id: "d4-baisha-depart", time: "11:45 報到", name: "北竿白沙港", area: "北竿", category: "島際船", duration: "20 分鐘", media: "baisha", summary: "11:45 抵港候船，預計 12:00 左右前往南竿。", tip: "船班以當日公告為準；先完成還車、領票與行李安置，不要把 11:45 當作開船時間。", best: "12:00 前後船班", map: "北竿白沙港" },
+    { id: "d4-fuao-arrival", time: "12:25", name: "南竿福澳碼頭", area: "南竿", category: "抵達轉乘", duration: "10 分鐘", media: "fuao", summary: "抵達南竿後直接前往復興村午餐。", tip: "若船班延誤，先聯絡依嬤的店並壓縮午餐，不要壓縮機場報到緩衝。", map: "南竿福澳港" },
+    { id: "d4-yima", time: "12:40", name: "依嬤的店", area: "南竿復興村", category: "午餐", duration: "80 分鐘", media: "yima", summary: "用紅糟、老酒與海味完成最後一頓馬祖風味餐。", intro: "依嬤的店提供紅糟炒飯、酒糟肉、淡菜與老酒料理，是集中品嘗馬祖家常味的好選擇。", tip: "務必預訂 12:40 並告知有 14:10 八八坑道行程；午後仍需搭機，勿飲酒。" },
+    { id: "d4-tunnel-88", time: "14:10", name: "八八坑道", area: "南竿牛角", category: "酒香戰地", duration: "45 分鐘", media: "tunnel88", summary: "在恆溫坑道與酒香中，完成最後一個南竿景點。", intro: "八八坑道原為戰備坑道，恆溫恆濕環境後來成為陳年高粱與老酒的天然酒窖。", tip: "官方下午開放時段為 13:40–17:00；參觀前再次電話確認，14:55 必須離開前往機場。" },
+    { id: "d4-nangan-airport", time: "15:15", name: "馬祖南竿機場", area: "南竿", category: "航班報到", duration: "約 3 小時", media: "airport", summary: "提早抵達機場，為天候、行李與報到保留足夠緩衝。", tip: "先辦理報到與托運，再於航廈休息；持續留意天候與航班動態。", map: "馬祖南竿機場" },
+    { id: "d4-flight", time: "18:20", name: "南竿 → 台北航班", area: "南竿 → 松山", category: "回程飛行", duration: "50 分鐘", media: "plane", summary: "搭乘已確認的 18:20 班機返回台北。", tip: "登機時間依航空公司通知；若天候異常，依現場航務安排處理。", best: "18:20 起飛", map: "馬祖南竿機場" },
+    { id: "d4-songshan-arrival", time: "19:10", name: "松山機場", area: "台北", category: "旅程抵達", duration: "行程結束", media: "plane", summary: "落地松山，四天三夜馬祖旅行完成。", tip: "領取行李後再安排返家交通；若航班延誤，以實際抵達時間為準。", map: "台北松山機場" }
+  ]
 ];
+
+const spots = itinerary.flatMap((dayStops, day) => dayStops.map((config, index) => makeStop(day, index, config)));
 
 const foods = [
   { name: "老酒麵線", category: "main", label: "主食", priority: "必吃", icon: "麵", description: "以馬祖老酒、雞蛋與麻油煮成的暖胃麵線，酒香會依店家比例不同。", where: "依嬤的店、大眾飲食店、鏡沃小吃" },
-  { name: "馬祖魚麵", category: "main", label: "主食", priority: "必吃", icon: "魚", description: "把魚肉揉進麵糰，可做湯麵、炒麵或炸魚麵，口感彈而鮮甜。", where: "8/22 阿婆魚麵店" },
+  { name: "馬祖魚麵", category: "main", label: "主食", priority: "必吃", icon: "魚", description: "把魚肉揉進麵糰，可做湯麵、炒麵或炸魚麵，口感彈而鮮甜。", where: "8/21 阿婆魚麵店" },
   { name: "紅糟炒飯", category: "main", label: "主食", priority: "必吃", icon: "飯", description: "紅糟把米飯染成溫暖紅色，帶著淡淡發酵香，是馬祖餐桌代表。", where: "依嬤的店、蝦寮食堂、龍福山莊" },
   { name: "狗麵", category: "main", label: "主食", priority: "推薦", icon: "麵", description: "馬祖家常湯麵的名稱，通常搭配肉絲、海鮮或蔬菜，並不是狗肉。", where: "萬家香二店" },
   { name: "鼎邊糊", category: "main", label: "主食", priority: "推薦", icon: "湯", description: "米漿沿鍋邊燙成薄片，再加入海鮮、肉絲與高湯，清晨吃最對味。", where: "8/20 介壽獅子市場" },
@@ -246,7 +116,7 @@ const foods = [
   { name: "老酒蒸黃魚", category: "seafood", label: "海鮮料理", priority: "必吃", icon: "魚", description: "細嫩黃魚以老酒清蒸，鮮味與酒香平衡，適合多人分享。", where: "依嬤的店、津沙小館、蝦寮食堂" },
   { name: "紅糟肉", category: "seafood", label: "特色料理", priority: "必吃", icon: "糟", description: "豬肉以紅糟醃製後炸至外酥內嫩，鹹甜發酵香非常下飯。", where: "依嬤的店、蝦寮食堂" },
   { name: "紅糟鰻魚", category: "seafood", label: "特色料理", priority: "推薦", icon: "鰻", description: "鰻魚裹紅糟醬炸或燒製，是馬祖常見的傳統宴席料理。", where: "依嬤的店、風味合菜餐廳" },
-  { name: "海鮮痛風鍋", category: "seafood", label: "海鮮料理", priority: "多人推薦", icon: "鍋", description: "淡菜、鮮蝦、小卷與當季漁獲集中一鍋，份量澎湃且需預訂。", where: "8/21 龍福山莊" },
+  { name: "海鮮痛風鍋", category: "seafood", label: "海鮮料理", priority: "多人推薦", icon: "鍋", description: "淡菜、鮮蝦、小卷與當季漁獲集中一鍋，份量澎湃且需預訂。", where: "北竿海鮮餐廳（本次未排入）" },
   { name: "繼光餅", category: "snack", label: "傳統點心", priority: "必吃", icon: "餅", description: "中間帶孔的厚實燒餅，可單吃，也能夾蛋、紅糟肉或蚵蛋。", where: "寶利軒、北竿超群繼光餅" },
   { name: "虫弟餅／蠣餅", category: "snack", label: "傳統點心", priority: "必吃", icon: "酥", description: "粉漿包入高麗菜、海蚵後油炸，外脆內多汁，務必趁熱吃。", where: "8/20 介壽獅子市場" },
   { name: "黃金地瓜餃", category: "snack", label: "傳統點心", priority: "必吃", icon: "薯", description: "地瓜皮包花生、芝麻、糖與蔥，可油炸，也能煮成甜湯。", where: "8/22 坂里大宅附近" },
@@ -259,19 +129,64 @@ const foods = [
 ];
 
 const dayInfo = {
-  all: ["ALL DAYS", "一趟剛剛好的島嶼旅行", "共 26 個精選停靠點，包含每日餐廳、夜間搖櫓船與回程交通。"],
-  0: ["8/19 · WED", "基隆晚餐後夜航，睡醒抵達南竿", "18:15 廟口晚餐；20:30 前抵達碼頭，22:00 開航。"],
-  1: ["8/20 · THU", "南竿：戰地、聚落、風味餐與藍眼淚", "18:00 晚餐、19:05 出發；19:40 前至北海坑道內報到、購票及聽取說明，參加已預約的 20:00 搖櫓船。"],
-  2: ["8/21 · FRI", "北竿：尋鹿、石厝與戰地山海", "大坵、橋仔與芹壁後，順遊播音站、壁山及戰爭和平紀念公園，17:30 塘岐晚餐。"],
-  3: ["8/22 · SAT", "北竿晨遊，回南竿搭機", "坂里大宅與沙灘、短坡山後 11:00 吃魚麵；15:20 搭船回南竿，銜接 18:20 班機。"]
+  all: ["ALL DAYS", "四天三夜的完整時間表", "共 44 個行程節點，包含景點、餐飲、住宿與轉乘。"],
+  0: ["8/19 · WED", "基隆晚餐後登船，夜航南竿", "20:00 廟口晚餐；21:30 新臺馬輪登船，22:00 開航。"],
+  1: ["8/20 · THU", "南竿西線、聚落與藍眼淚", "07:00 抵達福澳；19:40 北海坑道報到，20:00 已預約搖櫓船。"],
+  2: ["8/21 · FRI", "大坵登島，北竿由東走到芹壁", "09:00 福澳報到、09:30 開船；11:40 大坵返航，12:10 抵白沙。"],
+  3: ["8/22 · SAT", "北竿晨遊，回南竿搭機", "11:45 白沙港報到，12:25 抵福澳；15:15 到機場，18:20 起飛。"]
 };
+
+const routeDayMeta = [
+  { date: "8/19 WED", title: "基隆夜航" },
+  { date: "8/20 THU", title: "南竿西線與藍眼淚" },
+  { date: "8/21 FRI", title: "大坵與北竿環島" },
+  { date: "8/22 SAT", title: "北竿晨遊與南竿返航" }
+];
 
 const grid = document.querySelector("#spotGrid");
 const foodGrid = document.querySelector("#foodGrid");
 const dialog = document.querySelector("#spotDialog");
 const dialogContent = document.querySelector("#dialogContent");
 const toast = document.querySelector("#toast");
-let saved = new Set(JSON.parse(localStorage.getItem("matsu-saved") || "[]"));
+const routeDiagram = document.querySelector("#routeDiagram");
+const validSpotIds = new Set(spots.map(spot => spot.id));
+let saved = new Set(JSON.parse(localStorage.getItem("matsu-saved") || "[]").filter(id => validSpotIds.has(id)));
+
+function getRouteIcon(category) {
+  if (/航班|飛行|機場/.test(category)) return "飛";
+  if (/船|碼頭|抵達|交通/.test(category)) return "≈";
+  if (/餐|早餐|點心|咖啡|補給/.test(category)) return "食";
+  if (/住宿|入住|行李|出發/.test(category)) return "宿";
+  return "•";
+}
+
+function renderRouteDiagram(day = "all") {
+  const dayIndexes = day === "all" ? itinerary.map((_, index) => index) : [Number(day)];
+  routeDiagram.classList.toggle("route-all-days", day === "all");
+  routeDiagram.innerHTML = dayIndexes.map(dayIndex => {
+    const meta = routeDayMeta[dayIndex];
+    const daySpots = spots.filter(spot => spot.day === dayIndex);
+    return `
+      <article class="route-day-card">
+        <header>
+          <span>DAY ${dayIndex + 1}</span>
+          <div><small>${meta.date}</small><h4>${meta.title}</h4></div>
+        </header>
+        <ol class="route-steps">
+          ${daySpots.map(spot => `
+            <li>
+              <button type="button" data-route-detail="${spot.id}" aria-label="查看${spot.name}介紹">
+                <time>${spot.time}</time>
+                <span class="route-node" aria-hidden="true">${getRouteIcon(spot.category)}</span>
+                <span class="route-stop"><strong>${spot.name}</strong><small>${spot.area} · ${spot.category}</small></span>
+              </button>
+            </li>
+          `).join("")}
+        </ol>
+      </article>
+    `;
+  }).join("");
+}
 
 function renderCards() {
   grid.innerHTML = spots.map((spot, index) => `
@@ -386,6 +301,7 @@ function showToast(message) {
 document.addEventListener("click", event => {
   const saveButton = event.target.closest("[data-save]");
   const detailButton = event.target.closest("[data-detail]");
+  const routeDetail = event.target.closest("[data-route-detail]");
   const removeButton = event.target.closest("[data-remove]");
   if (saveButton) {
     toggleSave(saveButton.dataset.save);
@@ -393,6 +309,10 @@ document.addEventListener("click", event => {
   }
   if (removeButton) {
     toggleSave(removeButton.dataset.remove);
+    return;
+  }
+  if (routeDetail) {
+    openSpot(routeDetail.dataset.routeDetail);
     return;
   }
   if (detailButton) openSpot(detailButton.dataset.detail);
@@ -420,6 +340,7 @@ document.querySelectorAll(".day-tab").forEach(tab => {
     document.querySelector("#bannerDate").textContent = date;
     document.querySelector("#bannerTitle").textContent = title;
     document.querySelector("#bannerCopy").textContent = copy;
+    renderRouteDiagram(day);
   });
 });
 
@@ -447,12 +368,13 @@ document.querySelector("#clearSaved").addEventListener("click", () => {
 });
 document.querySelectorAll("#openAllSaved, #savedSummary").forEach(button => button.addEventListener("click", () => document.querySelector("#planner").scrollIntoView()));
 
-const departure = new Date("2026-08-19T22:00:00+08:00");
+const departure = new Date("2026-08-19T21:30:00+08:00");
 const now = new Date();
 const days = Math.max(0, Math.ceil((departure - now) / 86400000));
 document.querySelector("#countdown").textContent = now >= departure ? "旅程開始了" : `${days} 天`;
 window.addEventListener("scroll", () => document.querySelector(".site-header").classList.toggle("scrolled", window.scrollY > 40), { passive: true });
 
 renderCards();
+renderRouteDiagram();
 renderFoods();
 saveState(false);
