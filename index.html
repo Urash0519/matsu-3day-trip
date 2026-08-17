@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102f42">
-  <meta name="description" content="2026 馬祖南竿、北竿四天三夜互動旅遊行程，含 44 個時間節點、簡易路線圖、夜間搖櫓船與在地美食。">
+  <meta name="description" content="2026 馬祖南竿、北竿四天三夜互動旅遊行程，含 44 個時間節點、互動路線地圖、夜間搖櫓船與在地美食。">
   <meta property="og:title" content="島嶼慢行｜馬祖四天三夜">
   <meta property="og:description" content="基隆夜航、南北竿各住一晚、南竿搭機返台：44 個景點、餐飲與交通節點的完整行程。">
   <meta property="og:image" content="https://urash0519.github.io/matsu-3day-trip/og.png">
@@ -15,7 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260817-1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css?v=20260817-2">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳至主要內容</a>
@@ -138,10 +139,11 @@
 
       <section class="day-route-panel" aria-labelledby="day-route-title">
         <div class="day-route-head">
-          <div><span class="mini-label">DAY ROUTE</span><h3 id="day-route-title">簡易路線圖</h3></div>
-          <p>依時間串起每個停靠點；點擊節點可直接查看介紹。此圖用來看順序，並非比例導航地圖。</p>
+          <div><span class="mini-label">INTERACTIVE MAP</span><h3 id="day-route-title">互動路線地圖</h3></div>
+          <p>標記依時間編號，點擊可查看時間與介紹；虛線表示行程順序，並非道路導航路線。</p>
         </div>
-        <div class="route-diagram" id="routeDiagram"></div>
+        <div class="route-diagram" id="routeDiagram" aria-label="馬祖每日行程互動地圖"></div>
+        <p class="route-map-status" id="routeMapStatus" aria-live="polite">正在載入四天全程路線。</p>
       </section>
 
       <div class="spot-grid" id="spotGrid"></div>
@@ -207,6 +209,7 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260817-1"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js?v=20260817-2"></script>
 </body>
 </html>

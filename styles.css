@@ -139,24 +139,23 @@ h2 { margin-bottom: 0; font: 800 clamp(36px, 5vw, 68px)/1.15 "Noto Serif TC", se
 .day-route-head { margin-bottom: 22px; display: flex; align-items: end; justify-content: space-between; gap: 28px; }
 .day-route-head h3 { margin: 6px 0 0; font: 700 28px "Noto Serif TC", serif; }
 .day-route-head p { max-width: 560px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
-.route-diagram { display: grid; grid-template-columns: minmax(0, 760px); justify-content: center; gap: 14px; }
-.route-diagram.route-all-days { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.route-day-card { min-width: 0; padding: 20px; border: 1px solid rgba(20,66,82,.12); border-radius: 18px; background: var(--white); box-shadow: 0 12px 28px rgba(20,45,56,.05); }
-.route-day-card > header { min-height: 56px; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
-.route-day-card > header > span { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; color: white; background: var(--blue); font-size: 10px; font-weight: 800; }
-.route-day-card header small { display: block; color: var(--coral); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
-.route-day-card header h4 { margin: 3px 0 0; font: 700 17px "Noto Serif TC", serif; }
-.route-steps { margin: 0; padding: 0; list-style: none; }
-.route-steps li { position: relative; }
-.route-steps li:not(:last-child)::after { content: ""; position: absolute; z-index: 0; left: 91px; top: 38px; bottom: -10px; width: 2px; background: linear-gradient(var(--blue), rgba(28,91,113,.12)); }
-.route-steps button { position: relative; z-index: 1; width: 100%; min-height: 58px; padding: 7px 2px; display: grid; grid-template-columns: 64px 32px minmax(0,1fr); align-items: center; gap: 12px; border: 0; border-radius: 12px; color: var(--ink); background: transparent; text-align: left; cursor: pointer; transition: background .2s, transform .2s; }
-.route-steps button:hover,.route-steps button:focus-visible { background: #e8f0ef; transform: translateX(2px); outline: 0; }
-.route-steps time { color: var(--muted); font-size: 11px; font-weight: 800; text-align: right; }
-.route-node { width: 32px; height: 32px; display: grid; place-items: center; border: 3px solid var(--white); border-radius: 50%; color: white; background: var(--coral); box-shadow: 0 0 0 2px rgba(229,109,77,.22); font: 800 11px "Noto Serif TC", serif; }
-.route-stop { min-width: 0; }
-.route-stop strong,.route-stop small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.route-stop strong { font-size: 13px; }
-.route-stop small { margin-top: 3px; color: var(--muted); font-size: 10px; }
+.route-diagram { width: 100%; height: 560px; border: 1px solid rgba(20,66,82,.16); border-radius: 18px; background: #dce8e7; overflow: hidden; box-shadow: 0 14px 32px rgba(20,45,56,.08); }
+.route-map-status { margin: 12px 2px 0; color: var(--muted); font-size: 12px; }
+.map-fallback { margin: 0; padding: 40px; color: var(--muted); text-align: center; }
+.leaflet-container { font-family: "Noto Sans TC", sans-serif; }
+.leaflet-control-zoom a { color: var(--blue); }
+.leaflet-control-attribution { font-size: 9px; }
+.map-marker-shell { border: 0; background: transparent; }
+.map-marker-shell span { width: 34px; height: 34px; display: grid; place-items: center; border: 3px solid white; border-radius: 50% 50% 50% 12px; color: white; background: var(--marker-color); box-shadow: 0 5px 14px rgba(7,36,48,.3); transform: rotate(-45deg); font-size: 12px; font-weight: 800; }
+.map-marker-shell b { display: block; transform: rotate(45deg); font-weight: 800; }
+.map-popup { min-width: 180px; padding: 2px; }
+.map-popup span,.map-popup strong,.map-popup small { display: block; }
+.map-popup span { color: var(--coral); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.map-popup strong { margin-top: 5px; font: 700 16px "Noto Serif TC", serif; }
+.map-popup small { margin-top: 3px; color: var(--muted); }
+.map-popup button { margin-top: 12px; padding: 7px 12px; border: 0; border-radius: 99px; color: white; background: var(--blue); font-weight: 700; cursor: pointer; }
+.leaflet-popup-content-wrapper { border-radius: 14px; }
+.leaflet-popup-content { margin: 14px; }
 
 .spot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .spot-card { min-width: 0; border-radius: 24px; overflow: hidden; background: var(--white); box-shadow: 0 14px 35px rgba(20,45,56,.06); cursor: pointer; transition: transform .25s, box-shadow .25s; }
@@ -249,7 +248,6 @@ h2 { margin-bottom: 0; font: 800 clamp(36px, 5vw, 68px)/1.15 "Noto Serif TC", se
 
 @media (max-width: 1000px) {
   .stats-grid,.note-grid { grid-template-columns: repeat(2,1fr); }
-  .route-diagram.route-all-days { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .spot-grid { grid-template-columns: repeat(2,1fr); }
   .food-grid { grid-template-columns: 1fr; }
   .route-board { grid-template-columns: 1fr; }.route-map { min-height: 420px; }
@@ -265,7 +263,7 @@ h2 { margin-bottom: 0; font: 800 clamp(36px, 5vw, 68px)/1.15 "Noto Serif TC", se
   .stats-grid { grid-template-columns: 1fr 1fr; }.stat-card { min-height: 145px; padding: 18px; }.stat-card strong { font-size: 17px; }
   .route-intro { padding: 34px 26px; }.route-map { min-height: 430px; }.island { gap: 8px; }.island strong { font-size: 20px; }.island div > span { font-size: 11px; }
   .day-tabs { display: flex; overflow-x: auto; scrollbar-width: none; }.day-tab { min-width: 132px; }.day-banner { align-items: start; flex-direction: column; }.day-banner p { font-size: 13px; }
-  .day-route-panel { padding: 20px 14px; }.day-route-head { align-items: start; flex-direction: column; gap: 10px; }.route-diagram.route-all-days { grid-template-columns: 1fr; }.route-day-card { padding: 17px 12px; }.route-steps button { grid-template-columns: 60px 32px minmax(0,1fr); gap: 10px; }.route-steps li:not(:last-child)::after { left: 85px; }.route-stop strong { font-size: 14px; }
+  .day-route-panel { padding: 20px 14px; }.day-route-head { align-items: start; flex-direction: column; gap: 10px; }.route-diagram { height: 470px; }
   .spot-grid { grid-template-columns: 1fr; }.spot-image-wrap { height: 230px; }.spot-actions { align-items: start; flex-direction: column-reverse; gap: 12px; }.spot-schedule { width: 100%; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left; }.spot-duration { text-align: right; }
   .food-card summary { grid-template-columns: 44px 1fr auto 18px; padding: 16px; gap: 10px; }
   .food-detail { padding: 0 16px 18px 70px; }

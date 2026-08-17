@@ -32,6 +32,53 @@ const media = {
   plane: { image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=82", credit: "Unsplash（飛行示意）", source: "https://unsplash.com/" }
 };
 
+const spotCoordinates = {
+  "d1-keelung": [25.1285516, 121.7428504],
+  "d1-new-taima": [25.1355, 121.7394],
+  "d2-fuao-arrival": [26.1617973, 119.9388028],
+  "d2-jieshou": [26.1554183, 119.9513014],
+  "d2-beihai-day": [26.1427263, 119.9291527],
+  "d2-dahan": [26.140831, 119.9288696],
+  "d2-azhu": [26.1424, 119.9297],
+  "d2-tiebao": [26.1418655, 119.9209167],
+  "d2-jinsha": [26.14535, 119.91305],
+  "d2-muguang-checkin": [26.1455786, 119.9133025],
+  "d2-mazu-statue": [26.1607743, 119.9169353],
+  "d2-mazu-temple": [26.1583916, 119.9181111],
+  "d2-seesea": [26.1589, 119.91855],
+  "d2-dazhong": [26.15915, 119.91885],
+  "d2-beihai-night": [26.1429, 119.92935],
+  "d2-muguang-return": [26.14575, 119.91345],
+  "d3-muguang-depart": [26.1455786, 119.9133025],
+  "d3-meiweixuan": [26.15615, 119.9488],
+  "d3-fuao-depart": [26.1617973, 119.9388028],
+  "d3-daqiu": [26.2466914, 120.0000409],
+  "d3-baisha-arrival": [26.2051624, 119.9685129],
+  "d3-apo": [26.2242, 120.0011],
+  "d3-short-slope": [26.2203863, 119.9956139],
+  "d3-war-peace": [26.2256, 120.0083],
+  "d3-tanghou": [26.2218, 120.0052],
+  "d3-bishan": [26.2251857, 119.9926083],
+  "d3-qiaozi": [26.2361, 119.9935],
+  "d3-qinwo": [26.2251, 119.9816],
+  "d3-qinbi": [26.2248, 119.98115],
+  "d3-dazhai-checkin": [26.2143, 119.9746],
+  "d4-dazhai-depart": [26.2143, 119.9746],
+  "d4-broadcast": [26.2250227, 119.9790842],
+  "d4-banli-breakfast": [26.21465, 119.9751],
+  "d4-dazhai-luggage": [26.21445, 119.9748],
+  "d4-banli-house": [26.2141, 119.97425],
+  "d4-sweet-potato": [26.21425, 119.97405],
+  "d4-banli-beach": [26.213857, 119.9741534],
+  "d4-baisha-depart": [26.2051624, 119.9685129],
+  "d4-fuao-arrival": [26.1617973, 119.9388028],
+  "d4-yima": [26.1635408, 119.9529263],
+  "d4-tunnel-88": [26.1603261, 119.9534301],
+  "d4-nangan-airport": [26.1602813, 119.9585983],
+  "d4-flight": [26.16045, 119.95885],
+  "d4-songshan-arrival": [25.066477, 121.5548877]
+};
+
 function makeStop(day, index, config) {
   const asset = media[config.media] || media.stay;
   return {
@@ -41,6 +88,7 @@ function makeStop(day, index, config) {
     image: asset.image,
     credit: asset.credit,
     source: asset.source,
+    coords: spotCoordinates[config.id],
     intro: config.intro || config.summary,
     tip: config.tip || "依現場狀況彈性調整，移動時請預留停車與找路時間。",
     best: config.best || config.time,
@@ -143,49 +191,76 @@ const routeDayMeta = [
   { date: "8/22 SAT", title: "北竿晨遊與南竿返航" }
 ];
 
+const routeColors = ["#d56549", "#246f8a", "#4f806d", "#b5852d"];
+
 const grid = document.querySelector("#spotGrid");
 const foodGrid = document.querySelector("#foodGrid");
 const dialog = document.querySelector("#spotDialog");
 const dialogContent = document.querySelector("#dialogContent");
 const toast = document.querySelector("#toast");
 const routeDiagram = document.querySelector("#routeDiagram");
+const routeMapStatus = document.querySelector("#routeMapStatus");
 const validSpotIds = new Set(spots.map(spot => spot.id));
 let saved = new Set(JSON.parse(localStorage.getItem("matsu-saved") || "[]").filter(id => validSpotIds.has(id)));
 
-function getRouteIcon(category) {
-  if (/航班|飛行|機場/.test(category)) return "飛";
-  if (/船|碼頭|抵達|交通/.test(category)) return "≈";
-  if (/餐|早餐|點心|咖啡|補給/.test(category)) return "食";
-  if (/住宿|入住|行李|出發/.test(category)) return "宿";
-  return "•";
-}
+let routeMap;
+let routeMapLayer;
 
 function renderRouteDiagram(day = "all") {
+  if (!window.L) {
+    routeDiagram.innerHTML = '<p class="map-fallback">地圖元件暫時無法載入，請使用下方行程卡查看各站介紹。</p>';
+    return;
+  }
+
   const dayIndexes = day === "all" ? itinerary.map((_, index) => index) : [Number(day)];
-  routeDiagram.classList.toggle("route-all-days", day === "all");
-  routeDiagram.innerHTML = dayIndexes.map(dayIndex => {
-    const meta = routeDayMeta[dayIndex];
-    const daySpots = spots.filter(spot => spot.day === dayIndex);
-    return `
-      <article class="route-day-card">
-        <header>
-          <span>DAY ${dayIndex + 1}</span>
-          <div><small>${meta.date}</small><h4>${meta.title}</h4></div>
-        </header>
-        <ol class="route-steps">
-          ${daySpots.map(spot => `
-            <li>
-              <button type="button" data-route-detail="${spot.id}" aria-label="查看${spot.name}介紹">
-                <time>${spot.time}</time>
-                <span class="route-node" aria-hidden="true">${getRouteIcon(spot.category)}</span>
-                <span class="route-stop"><strong>${spot.name}</strong><small>${spot.area} · ${spot.category}</small></span>
-              </button>
-            </li>
-          `).join("")}
-        </ol>
-      </article>
-    `;
-  }).join("");
+  if (!routeMap) {
+    routeMap = L.map(routeDiagram, { scrollWheelZoom: false, zoomControl: true });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(routeMap);
+  }
+
+  if (routeMapLayer) routeMapLayer.remove();
+  routeMapLayer = L.featureGroup().addTo(routeMap);
+
+  dayIndexes.forEach(dayIndex => {
+    const daySpots = spots.filter(spot => spot.day === dayIndex && spot.coords);
+    const color = routeColors[dayIndex];
+    const points = daySpots.map(spot => spot.coords);
+
+    if (points.length > 1) {
+      L.polyline(points, { color, weight: 4, opacity: .76, dashArray: "8 8", lineCap: "round" }).addTo(routeMapLayer);
+    }
+
+    daySpots.forEach((spot, index) => {
+      const markerIcon = L.divIcon({
+        className: "map-marker-shell",
+        html: `<span style="--marker-color:${color}"><b>${index + 1}</b></span>`,
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -15]
+      });
+      L.marker(spot.coords, { icon: markerIcon })
+        .bindTooltip(`${spot.time} · ${spot.name}`, { direction: "top", offset: [0, -14] })
+        .bindPopup(`
+          <div class="map-popup">
+            <span>DAY ${spot.day + 1} · ${spot.time}</span>
+            <strong>${spot.name}</strong>
+            <small>${spot.area} · ${spot.category}</small>
+            <button type="button" data-map-detail="${spot.id}">查看介紹 →</button>
+          </div>
+        `)
+        .addTo(routeMapLayer);
+    });
+  });
+
+  const bounds = routeMapLayer.getBounds();
+  if (bounds.isValid()) routeMap.fitBounds(bounds, { padding: [34, 34], maxZoom: day === "all" ? 8 : 14 });
+  routeMapStatus.textContent = day === "all"
+    ? "目前顯示四天全程；切換上方日期可放大單日路線。"
+    : `目前顯示 DAY ${Number(day) + 1}｜${routeDayMeta[Number(day)].title}。`;
+  requestAnimationFrame(() => routeMap.invalidateSize());
 }
 
 function renderCards() {
@@ -302,6 +377,7 @@ document.addEventListener("click", event => {
   const saveButton = event.target.closest("[data-save]");
   const detailButton = event.target.closest("[data-detail]");
   const routeDetail = event.target.closest("[data-route-detail]");
+  const mapDetail = event.target.closest("[data-map-detail]");
   const removeButton = event.target.closest("[data-remove]");
   if (saveButton) {
     toggleSave(saveButton.dataset.save);
@@ -313,6 +389,10 @@ document.addEventListener("click", event => {
   }
   if (routeDetail) {
     openSpot(routeDetail.dataset.routeDetail);
+    return;
+  }
+  if (mapDetail) {
+    openSpot(mapDetail.dataset.mapDetail);
     return;
   }
   if (detailButton) openSpot(detailButton.dataset.detail);
